@@ -106,3 +106,15 @@ form {
   .agreement-link {
     color: #f4da6a;
   }
+
+  .input {
+    @apply p-2 border rounded-md;
+  }
+  
+  .error {
+    @apply border-red-500;
+  }
+  
+  .error-message {
+    @apply text-red-500 text-sm;
+  }

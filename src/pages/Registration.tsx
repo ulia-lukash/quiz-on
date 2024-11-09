@@ -39,6 +39,7 @@ const Registration: React.FC= () => {
     group_name: '',
     phone: '',
     team_name: '',
+    team_id: '',
     amount: null,
   });
 
@@ -46,7 +47,6 @@ const Registration: React.FC= () => {
   const [formErrors, setFormErrors] = useState({
     tg_contact: false,
     captain_name: false,
-    group_name: false,
     phone: false,
     team_name: false,
     amount: false,
@@ -74,7 +74,6 @@ const Registration: React.FC= () => {
     const errors = {
       tg_contact: form.tg_contact.trim() === '',
       captain_name: form.captain_name.trim() === '',
-      group_name: form.group_name.trim() === '',
       phone: form.phone.trim() === '',
       team_name: form.team_name.trim() === '',
       amount: form.amount === null || form.amount === '',
@@ -121,6 +120,7 @@ const Registration: React.FC= () => {
         { name: 'phone', title:'НОМЕР ТЕЛЕФОНА', placeholder: '8(999)888-77-66' },
         { name: 'tg_contact', title:'TELEGRAM', placeholder: '@quizonmsk' },
         { name: 'team_name', title:'НАЗВАНИЕ КОМАНДЫ', placeholder: 'КвизON' },
+        { name: 'team_id', title:'ID КОМАНДЫ', placeholder: '123456' },
         { name: 'amount', title:'КОЛИЧЕСТВО ЧЕЛОВЕК', placeholder: '6' },
       ].map(field => (
         <div key={field.name} className='block-input'>
@@ -131,7 +131,7 @@ const Registration: React.FC= () => {
             name={field.name}  // Dynamically set the field name
             value={form[field.name as keyof typeof form] ?? ''}  // Bind the field value to the form state
             onChange={handleInputChange}  // Use the generic change handler
-            required
+            required={!['team_id', 'group_name'].includes(field.name)}
             className={`input ${(formErrors as Record<string, boolean>)[field.name] ? 'error' : ''}`}  // Conditionally apply error class
             type="text"
             placeholder={field.placeholder}

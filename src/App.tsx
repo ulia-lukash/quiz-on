@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 import CreateGame from './pages/CreateGame';
@@ -23,6 +24,8 @@ const App: React.FC = () => {
             <Route path="/create-game" element={<CreateGame />} />
           </Routes>
         </div>
+
+        <Footer />
       </div>
     </Router>
   );
