@@ -1,0 +1,65 @@
+.outer-container {
+    background-color: #e0ac59; /* Dark blue background */
+    border-radius: 30px;
+    padding: 2px; /* Make space for the orange border */
+    display: flex;
+    justify-content: center; /* Center inner container horizontally */
+    align-items: flex-end;
+    height: 350px;
+    position: relative;
+}
+
+.inner-container {
+    border-radius: 30px;
+    width: 100%; /* Set width to your desired size */
+    height: 303px; /* Set height to your desired size */
+    padding: 0; /* Reset inner padding so the top border does not get extra space */
+    position: relative;
+}
+
+.top-border {
+    background-color: #e0ac59; /* Orange color */
+    height: 47px; /* Height of the thick orange top border */
+    width: 100%; /* Full width */
+    position: absolute;
+    top: 0; /* Position it at the very top of the outer container */
+    left: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px; /* Match the border radius */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure it stays on top of the inner container */
+}
+
+.top-border-text {
+    color: white; /* Text color for the top border */
+    font-weight: bold;
+    font-size: 16px; /* Adjust size as necessary */
+}
+
+.content {
+    border-radius: 30px;
+    padding: 10px; /* Padding for content */
+    overflow: hidden; /* Make sure no content overflows */
+    display: flex;
+    margin-top: 1.5%;
+    flex-direction: column; /* Align child elements vertically */
+    justify-content: flex-start; /* Align inner content to the top */
+    align-items: center; /* Center inner content horizontally */
+}
+
+.inner-content {
+    border-radius: 18px;
+    background-color: #0A1221;
+    width: 97%;
+}
+
+.time-content {
+    border-radius: 18px;
+    background-color: #0A1221;
+}
+
+.full-width {
+    width: 97%;
+}

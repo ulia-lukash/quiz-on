@@ -1,0 +1,44 @@
+.app {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: ProductSans;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../../public/assets/fonts/ProductSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: ProductSans;
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../../public/assets/fonts/ProductSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: ProductSans;
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../../public/assets/fonts/ProductSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: ProductSans;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../public/assets/fonts/ProductSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: ProductSans;
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('../../public/assets/fonts/ProductSans-Thin.ttf') format('truetype');
+}
