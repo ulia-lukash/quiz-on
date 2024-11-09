@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 350px;
     position: relative;
 }
 
@@ -24,3 +23,86 @@
     width: 90%;
     text-align: left;
 }
+
+.info-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.info-text {
+    color: white;
+    font-family: ProductSans;
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.btn-container {
+    width: 90%;
+    font-size: 12px;
+    padding-bottom: 30px;
+  }
+form {
+    width: 90%;
+}
+
+  .block-input {
+    margin-top: 11px;
+    width: 100%;
+    height: 51px;
+  }
+
+  .block-text {
+    font-size: 13px;
+    line-height: 15px;
+    font-family: ProductSans;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .star {
+    color: #f4da6a;
+  }
+
+.input {
+    padding: 8px;
+    margin-top: 6px;
+    width: 100%;
+    height: 32px;
+    border-radius: 12px;
+    border-width: 2px;
+    background-color: #182a3e;
+    border-color: #ffffff33;
+    color: #ffffff;
+}
+.reg-btn {
+    background-color: #182a3e;
+    border: 1.33428px solid #f4da6a;
+    border-radius: 17.3457px;
+    width: 100%;
+    height: 35px;
+    font-family: ProductSans;
+    font-weight: 700;
+    font-size: 17px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .agreement {
+    font-family: ProductSans;
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+  .agreement-link {
+    color: #f4da6a;
+  }
