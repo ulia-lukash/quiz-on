@@ -9,9 +9,24 @@ import GamesList from './pages/GamesList';
 import Registration from './pages/Registration';
 import './styles/app.css'
 import Participants from './pages/Participants';
+
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
 const App: React.FC = () => {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/participants') {
+      document.body.classList.add('full-width-body');
+    } else {
+      document.body.classList.remove('full-width-body');
+    }
+  }, [location]);
+
   return (
-    <Router>
+    <div className='w-full'>
       <Header />
       <div className="app bg-primary flex flex-col items-center">
 
@@ -29,7 +44,7 @@ const App: React.FC = () => {
 
         <Footer />
       </div>
-    </Router>
+    </div>
   );
 };
 

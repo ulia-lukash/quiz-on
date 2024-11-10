@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.full-width-body .app {
+    max-width: 100vw !important;
+  }
+
 @font-face {
     font-family: ProductSans;
     font-style: normal;

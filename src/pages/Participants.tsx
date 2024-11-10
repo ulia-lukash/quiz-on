@@ -38,7 +38,7 @@ const Participants: React.FC= () => {
   }
 
   return(
-    <div className="participants-div">
+    <div>
         <h1>УЧАСТНИКИ</h1>
         <div className="container">
         <table className="table">

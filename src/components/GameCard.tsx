@@ -13,7 +13,7 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
 
-  const isAuthenticated = false
+  const isAuthenticated = true
     // Format the date in Russian locale
   const dateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
