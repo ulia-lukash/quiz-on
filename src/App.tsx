@@ -8,6 +8,7 @@ import CreateGame from './pages/CreateGame';
 import GamesList from './pages/GamesList';
 import Registration from './pages/Registration';
 import './styles/app.css'
+import Participants from './pages/Participants';
 const App: React.FC = () => {
   return (
     <Router>
@@ -15,12 +16,13 @@ const App: React.FC = () => {
       <div className="app bg-primary flex flex-col items-center">
 
         {/* Routes */}
-        <div className="mt-6 full-width">
+        <div className="mt-6 w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/games-list" element={<GamesList />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/participants" element={<Participants />} />
             <Route path="/create-game" element={<CreateGame />} />
           </Routes>
         </div>

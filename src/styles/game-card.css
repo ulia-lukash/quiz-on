@@ -12,13 +12,12 @@
 .inner-container {
     border-radius: 30px;
     width: 100%; /* Set width to your desired size */
-    height: 303px; /* Set height to your desired size */
+    height: 305px; /* Set height to your desired size */
     padding: 0; /* Reset inner padding so the top border does not get extra space */
     position: relative;
 }
 
 .top-border {
-    background-color: #e0ac59; /* Orange color */
     height: 47px; /* Height of the thick orange top border */
     width: 100%; /* Full width */
     position: absolute;

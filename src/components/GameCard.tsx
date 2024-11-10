@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/game-card.css';
+import { mdiEye } from '@mdi/js'; // Import icons
+import Icon from '@mdi/react'; // Import Icon component
 
 interface GameCardProps {
     game: {
@@ -10,6 +12,8 @@ interface GameCardProps {
   }
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
+
+  const isAuthenticated = false
     // Format the date in Russian locale
   const dateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
@@ -34,7 +38,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const time = new Intl.DateTimeFormat("ru-RU", timeOptions).format(game.date);
 
   return (
-    <div className="outer-container my-4 mx-2">
+    <div className="outer-container my-8 mx-2">
         <div className="top-border flex justify-between items-center">            
             <div className='left-side w-1/2 text-center uppercase font-bold text-xl'><p>{formattedDate}</p></div>
             <div className='right-side w-1/2  text-center uppercase font-bold text-xl'><p>{weekday}</p></div>
@@ -51,13 +55,23 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
                       <div className='time-title uppercase font-bold text-nowrap text-start text-secondary'>начало игры</div>
                   </div>
                   <div className='time-content right-side w-1/2 p-5'>
-                      <div className='uppercase font-bold text-start text-3xl text-white'>FREE</div>
-                      <div className='time-title uppercase font-bold text-nowrap text-start text-secondary'>с команды</div>
+                    <div className='uppercase font-bold text-start text-3xl text-white'>FREE</div>
+                    <div className='time-title uppercase font-bold text-nowrap text-start text-secondary'>с команды</div>
                   </div>
+                  
+                  
               </div>
-              <Link to={`/registration?game_id=${game.id}`} className='full-width'>
-                <button className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>регистрация</button>
-              </Link>
+              {isAuthenticated && (
+                <Link to={`/participants?game_id=${game.id}`} className='full-width'>
+                  <button className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>список участников</button>
+                </Link>
+              )}
+              {!isAuthenticated && (
+                <Link to={`/registration?game_id=${game.id}`} className='full-width'>
+                  <button className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>регистрация</button>
+                </Link>
+              )}
+              
             </div>
         </div>
     </div>

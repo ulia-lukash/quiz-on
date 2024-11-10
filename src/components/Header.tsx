@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { mdiViewHeadline } from '@mdi/js'; // Import icons
+import { mdiAccountCogOutline } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import '../styles/header.css';
 const Header: React.FC = () => {
@@ -15,9 +15,9 @@ const Header: React.FC = () => {
         />
       </Link>
 
-      <button>
-        <Icon path={mdiViewHeadline} size={1} color="#e0ac59" />
-      </button>
+      <Link to="/auth">
+        <Icon path={mdiAccountCogOutline} size={1.3} color="#e0ac59" />
+      </Link>
 
     </header>
   );

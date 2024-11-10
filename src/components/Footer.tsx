@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { mdiViewHeadline } from '@mdi/js'; // Import icons
-import Icon from '@mdi/react'; // Import Icon component
 import '../styles/footer.css';
 const Footer: React.FC = () => {
   return (
