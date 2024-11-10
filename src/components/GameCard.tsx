@@ -4,16 +4,19 @@ import '../styles/game-card.css';
 import { mdiEye } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 
-interface GameCardProps {
-    game: {
-        date: Date;
-        id: number;
-    };
+export interface GameCardProps {
+      start_time: string,
+      location: string,
+      name: string,
+      main_amount: number,
+      reserve_amount: number,
+      registartion_open_time: string,
+      id: number;
   }
 
-const GameCard: React.FC<GameCardProps> = ({ game }) => {
+const GameCard: React.FC<GameCardProps> = (game) => {
 
-  const isAuthenticated = true
+  const isAuthenticated = false
     // Format the date in Russian locale
   const dateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
@@ -33,10 +36,15 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
     hour12: false, // Use 24-hour format (set to true for 12-hour format)
   };
 
-  const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(game.date);
-  const weekday = new Intl.DateTimeFormat("ru-RU", dayOptions).format(game.date);
-  const time = new Intl.DateTimeFormat("ru-RU", timeOptions).format(game.date);
+  const start_time = new Date(game.start_time)
+  const registration_open_time = new Date(game.registartion_open_time)
 
+  const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(start_time);
+  const weekday = new Intl.DateTimeFormat("ru-RU", dayOptions).format(start_time);
+  const time = new Intl.DateTimeFormat("ru-RU", timeOptions).format(start_time);
+
+  // const registration_open = start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now())
+  const registration_open = true
   return (
     <div className="outer-container my-8 mx-2">
         <div className="top-border flex justify-between items-center">            
@@ -68,7 +76,10 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
               )}
               {!isAuthenticated && (
                 <Link to={`/registration?game_id=${game.id}`} className='full-width'>
-                  <button className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>регистрация</button>
+                  <button 
+                  className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'
+                  disabled={!registration_open}
+                  >регистрация</button>
                 </Link>
               )}
               

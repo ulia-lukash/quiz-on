@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/auth.css';
+import { Api } from '../api/api';
 // - Авторизация
 const Auth: React.FC = () => {
 
+  const api = new Api()
    // Initialize form state
    const [form, setForm] = useState({
     login: '',
@@ -44,13 +46,15 @@ const Auth: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate the form before submitting
     if (validateForm()) {
       // Handle form submission logic (e.g., send data to backend)
       console.log('Form submitted:', form);
+
+      await api.login(form)
     }
   };
 

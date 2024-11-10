@@ -3,10 +3,13 @@ import '../styles/registration.css'
 import { useLocation } from 'react-router-dom';
 import { mdiClockTimeThree, mdiMapMarker, mdiAlert } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
+import { Api } from '../api/api';
 
 // - Регистрация на игру
 const Registration: React.FC= () => {
 
+  const api = new Api()
+  
   const location = useLocation();
   // Access query parameters
   const queryParams = new URLSearchParams(location.search);
@@ -34,22 +37,23 @@ const Registration: React.FC= () => {
 
   // Initialize form state
   const [form, setForm] = useState({
-    tg_contact: '',
+    game_id: nidNumber,
+    telegram: '',
     captain_name: '',
     group_name: '',
     phone: '',
     team_name: '',
     team_id: '',
-    amount: null,
+    players_amount: 0,
   });
 
   // State to handle errors (you can use a more complex validation object)
   const [formErrors, setFormErrors] = useState({
-    tg_contact: false,
+    telegram: false,
     captain_name: false,
     phone: false,
     team_name: false,
-    amount: false,
+    players_amount: false,
   });
 
   // Generic handler to update form fields dynamically
@@ -72,11 +76,11 @@ const Registration: React.FC= () => {
   // Optional: Simple validation for required fields (you can extend this)
   const validateForm = () => {
     const errors = {
-      tg_contact: form.tg_contact.trim() === '',
+      telegram: form.telegram.trim() === '',
       captain_name: form.captain_name.trim() === '',
       phone: form.phone.trim() === '',
       team_name: form.team_name.trim() === '',
-      amount: form.amount === null || form.amount === '',
+      players_amount: form.players_amount === null,
     };
 
     setFormErrors(errors);
@@ -84,13 +88,16 @@ const Registration: React.FC= () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate the form before submitting
     if (validateForm()) {
-      // Handle form submission logic (e.g., send data to backend)
-      console.log('Form submitted:', form);
+
+      const playersAmount = Number(form.players_amount);
+      const formData = { ...form, players_amount: playersAmount };
+      console.log('Form submitted:', formData);
+      await api.game.register(formData);
     }
   };
 
@@ -118,10 +125,10 @@ const Registration: React.FC= () => {
         { name: 'captain_name', title:'ИМЯ КАПИТАНА', placeholder: 'Николай Эрнестович Бауман' },
         { name: 'group_name', title:'УЧЕБНАЯ ГРУППА КАПИТАНА', placeholder: 'СМ1-11' },
         { name: 'phone', title:'НОМЕР ТЕЛЕФОНА', placeholder: '8(999)888-77-66' },
-        { name: 'tg_contact', title:'TELEGRAM', placeholder: '@quizonmsk' },
+        { name: 'telegram', title:'TELEGRAM', placeholder: '@quizonmsk' },
         { name: 'team_name', title:'НАЗВАНИЕ КОМАНДЫ', placeholder: 'КвизON' },
         { name: 'team_id', title:'ID КОМАНДЫ', placeholder: '123456' },
-        { name: 'amount', title:'КОЛИЧЕСТВО ЧЕЛОВЕК', placeholder: '6' },
+        { name: 'players_amount', title:'КОЛИЧЕСТВО ЧЕЛОВЕК', placeholder: '6' },
       ].map(field => (
         <div key={field.name} className='block-input'>
           <div className="block-text">
@@ -133,7 +140,7 @@ const Registration: React.FC= () => {
             onChange={handleInputChange}  // Use the generic change handler
             required={!['team_id', 'group_name'].includes(field.name)}
             className={`input ${(formErrors as Record<string, boolean>)[field.name] ? 'error' : ''}`}  // Conditionally apply error class
-            type="text"
+            type={field.name === 'players_amount' ? 'number' : 'text'}
             placeholder={field.placeholder}
           />
           {((formErrors as Record<string, boolean>)[field.name]) && (

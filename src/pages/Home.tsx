@@ -1,19 +1,29 @@
 import React from 'react';
-import GameCard from '../components/GameCard';
+import GameCard, { GameCardProps } from '../components/GameCard';
 import '../styles/games-list.css'
 import { Link } from 'react-router-dom';
+import { Api } from '../api/api';
 const date = new Date("2024-06-04T18:00:00+03:00")
 
-const games = [
-  { id: 1, date: date},
-  { id: 2, date: date },
-  { id: 3, date: date },
-];
-
 // - Стартовая страница
-const Home: React.FC = () => {
+const Home: React.FC =() => {
+  const api = new Api()
 
-  const isAuthenticated = true
+  const [games, setGames] = React.useState<GameCardProps[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const games = await api.game.getAll();
+        setGames(games);
+      } catch (error) {
+        console.error("Failed to fetch games:", error);
+      }
+    };
+    fetchGames();
+  }, []);
+
   return (
     <div className="games-list bg-primary">
       {isAuthenticated && (
@@ -22,10 +32,11 @@ const Home: React.FC = () => {
         </Link>
       )}
       {games.map((game) => (
-        <GameCard key={game.id} game={game} />
+        <GameCard key={game.id} {...game} />
       ))}
     </div>
   );
+
 };
 
 export default Home;

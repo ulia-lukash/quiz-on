@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import '../styles/create-game.css'
+import { Api } from '../api/api';
 
 // - Создание игры
 const CreateGame: React.FC = () => {
 
+  const api = new Api()
   // Initialize form state
   const [form, setForm] = useState({
     start_time: null,
     location: 'МГТУ им. Н.Э.Баумана каб. 345',
-    // name: '',
-    main_amount: null,
-    reserve_amount: null,
+    name: '',
+    main_amount: 0,
+    reserve_amount: 0,
     registartion_open_time: null,
   });
 
@@ -44,6 +46,7 @@ const CreateGame: React.FC = () => {
   // Optional: Simple validation for required fields (you can extend this)
   const validateForm = () => {
     const errors = {
+
       start_time: form.start_time === null,
       location: form.location.trim() === '',
       main_amount: form.main_amount === null,
@@ -56,13 +59,22 @@ const CreateGame: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate the form before submitting
     if (validateForm()) {
-      // Handle form submission logic (e.g., send data to backend)
-      console.log('Form submitted:', form);
+      const mainAmount = Number(form.main_amount);
+      const reserve_amount = Number(form.reserve_amount);
+      const formData = {
+        ...form,
+        start_time: new Date(form.start_time ?? Date.now()),
+        registartion_open_time: new Date(form.registartion_open_time ?? Date.now()),
+        main_amount: mainAmount,
+        reserve_amount: reserve_amount
+      };
+      console.log('Form submitted:', formData);
+      await api.game.create(formData)
     }
   };
 

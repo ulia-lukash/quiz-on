@@ -1,5 +1,4 @@
 const path = require('path');
-
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -28,6 +27,6 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     compress: true,
-    port: 8080,
-  }
+    port: 3000,
+  },
 };
