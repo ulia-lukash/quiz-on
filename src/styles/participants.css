@@ -39,3 +39,8 @@ tbody {
 .container {
     margin: 0 auto;
 }
+
+td {
+    border-bottom: 1px solid #ffffff50;
+    text-align: center;
+}

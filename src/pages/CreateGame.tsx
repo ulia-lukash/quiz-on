@@ -3,7 +3,7 @@ import '../styles/create-game.css'
 import { Api } from '../api/api';
 
 // - Создание игры
-const CreateGame: React.FC = () => {
+export default function CreateGame() {
 
   const api = new Api()
   // Initialize form state
@@ -127,5 +127,3 @@ const CreateGame: React.FC = () => {
     </div>
   );
 };
-
-export default CreateGame;

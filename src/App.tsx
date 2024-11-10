@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 import CreateGame from './pages/CreateGame';
-import GamesList from './pages/GamesList';
 import Registration from './pages/Registration';
 import './styles/app.css'
 import Participants from './pages/Participants';
@@ -13,7 +12,10 @@ import Participants from './pages/Participants';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const App: React.FC = () => {
+import ProtectedRoute from './components/ProtectedRoute';
+
+
+export default function App() {
 
   const location = useLocation();
 
@@ -35,10 +37,18 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/games-list" element={<GamesList />} />
             <Route path="/registration" element={<Registration />} />
-            <Route path="/participants" element={<Participants />} />
-            <Route path="/create-game" element={<CreateGame />} />
+            <Route path="/participants" element={
+              <ProtectedRoute>
+                <Participants />
+              </ProtectedRoute>
+            } />
+            <Route path="/create-game" element={
+              <ProtectedRoute>
+                <CreateGame />
+              </ProtectedRoute>
+            } />
+            {/* <Route path="/create-game" element={<CreateGame />} /> */}
           </Routes>
         </div>
 
@@ -47,5 +57,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;

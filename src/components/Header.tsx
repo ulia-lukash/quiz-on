@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { mdiAccountCogOutline } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import '../styles/header.css';
-const Header: React.FC = () => {
+export default function Header() {
   return (
     <header className="bg-primary w-full p-4 flex items-center justify-between header">
 
@@ -22,5 +22,3 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
-export default Header;

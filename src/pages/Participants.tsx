@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/participants.css'
 import { useLocation } from 'react-router-dom';
-import { mdiClockTimeThree, mdiMapMarker, mdiAlert } from '@mdi/js'; // Import icons
+import { mdiDelete } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
+import { Api } from '../api/api';
 
 // - Регистрация на игру
-const Participants: React.FC= () => {
+export default function Participants() {
 
   const location = useLocation();
   // Access query parameters
@@ -13,28 +14,36 @@ const Participants: React.FC= () => {
   const nid = queryParams.get('game_id'); // Get 'nid' from the query param
   const nidNumber = parseInt(nid ?? "", 10);
 
-  const getParticipants = (data: any) => {
-    if (data.length > 0) {
-      let temp = ''
-      for (const itemData of data) {
-        const teamId = itemData.team_id ?? ''
+  const api = new Api();
+  const [participants, setParticipants] = React.useState<TeamResponse[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
 
-        temp +=
-          "<tr style='height: 70px; border: solid; border-width: 0.2px 0; border-color: rgba(255, 255, 255, 0.5);'>"
-        temp += "<td style='padding: 10px;'>" + itemData.number + '</td>'
-        temp += "<td style='padding: 10px;'>" + itemData.team_name + '</td>'
-        temp += "<td style='padding: 10px;'>" + itemData.tg_contact + '</td>'
-        temp += "<td style='padding: 10px;'>" + teamId + '</td>'
-        temp +=
-          "<td style='padding: 10px;'>" + itemData.captain_name + '</td>'
-        temp += "<td style='padding: 10px;'>" + itemData.group_name + '</td>'
-        temp += "<td style='padding: 10px;'>" + itemData.phone + '</td>'
-        temp += "<td style='padding: 10px;'>" + itemData.amount + '</td>'
-        temp +=
-          "<td style='padding: 10px;'>" + itemData.registered_at + '</td>'
+  React.useEffect(() => {
+    const fetchParticipants = async () => {
+      try {
+        const participants = await api.game.getRegistrations(nidNumber);
+        setParticipants(participants);
+      } catch (error) {
+        console.error("Failed to fetch games:", error);
       }
-    //   document.getElementById('rows').innerHTML = temp
-    }
+    };
+    fetchParticipants();
+  }, []);
+
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  };
+
+  const registeredDate = (dateString: string) => {
+    return new Date(dateString)
+  }
+  
+  const formattedDate = (date: string) => {
+    return new Intl.DateTimeFormat("ru-RU", dateOptions).format(registeredDate(date));
   }
 
   return(
@@ -53,12 +62,41 @@ const Participants: React.FC= () => {
                 <th>Телефон</th>
                 <th>Участников</th>
                 <th>Время регистрации</th>
+                <th></th>
             </tr>
             </thead>
-            <tbody id="rows"></tbody>
+            <tbody id="rows">
+            {participants.map((team) => (
+              <tr>
+                <td>{team.number}</td>
+                <td>{team.team_name}</td>
+                <td>{team.telegram}</td>
+                <td>{team.team_id}</td>
+                <td>{team.captain_name}</td>
+                <td>{team.group_name}</td>
+                <td>{team.phone}</td>
+                <td>{team.players_amount}</td>
+                <td>{formattedDate(team.registered_at)}</td>
+                <td>
+                  <Icon path={mdiDelete} size={1} color="#e0ac59" />
+                </td>
+              </tr>
+            ))}
+            </tbody>
         </table>
         </div>
     </div>
   )
 }
-export default Participants;
+type TeamResponse = {
+  game_id: number,
+  telegram: string,
+  team_id: string | null,
+  team_name: string,
+  captain_name: string,
+  phone: string,
+  group_name: string,
+  players_amount: number,
+  number: number,
+  registered_at: string
+}

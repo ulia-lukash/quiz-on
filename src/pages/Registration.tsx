@@ -6,9 +6,11 @@ import Icon from '@mdi/react'; // Import Icon component
 import { Api } from '../api/api';
 
 // - Регистрация на игру
-const Registration: React.FC= () => {
+export default function Registration() {
 
   const api = new Api()
+
+  const showModal = false;
   
   const location = useLocation();
   // Access query parameters
@@ -103,6 +105,11 @@ const Registration: React.FC= () => {
 
   return (
     <div className="registration-card items-center py-4">
+      {showModal && (
+        <div className="modal">
+
+        </div>
+      )}
       <div className="register-header text-white font-bold">РЕГИСТРАЦИЯ НА ИГРУ</div>
       <div className="game-num font-bold">{getOrdinal(nidNumber)} игра Бауманской лиги 24/25</div>
       <div className='info-container'>
@@ -161,5 +168,3 @@ const Registration: React.FC= () => {
     </div>
   );
 };
-
-export default Registration;

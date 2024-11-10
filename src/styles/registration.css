@@ -120,3 +120,16 @@ form {
   .error-message {
     @apply text-red-500 text-sm;
   }
+
+
+.modal {
+  position: fixed;
+  top: 25vh;
+  width: 96%;
+  max-width: 470px;
+  margin: 0 auto;
+  height: 50vh;
+  background-color: #f4da6a;
+  border-radius: 18px;
+  z-index: 1;
+}

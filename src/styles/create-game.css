@@ -22,3 +22,8 @@
     width: 97%;
     margin: 0 auto;
 }
+
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;  /* Hides the default icon */
+  }

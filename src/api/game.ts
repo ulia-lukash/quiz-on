@@ -31,6 +31,7 @@ export class GameApi {
                     'Content-Type': 'application/json', 
                 },
                 body: JSON.stringify(game),
+                credentials: 'include'
             });
     
             if (!response.ok) {
@@ -50,6 +51,7 @@ export class GameApi {
                 headers: {
                     'Content-Type': 'application/json', 
                 },
+                credentials: 'include'
             });
     
             if (!response.ok) {
@@ -100,5 +102,5 @@ type Team = {
     captain_name: string,
     phone: string,
     group_name: string,
-    players_amount: number
+    players_amount: number,
 }

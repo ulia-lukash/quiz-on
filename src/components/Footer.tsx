@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/footer.css';
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <footer className="bg-primary p-4 mt-10 justify-center">
       <div className="w-full">
@@ -25,5 +25,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;

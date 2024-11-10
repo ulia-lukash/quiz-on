@@ -3,14 +3,15 @@ import GameCard, { GameCardProps } from '../components/GameCard';
 import '../styles/games-list.css'
 import { Link } from 'react-router-dom';
 import { Api } from '../api/api';
+import { useAuth } from '../context/authContext';
 const date = new Date("2024-06-04T18:00:00+03:00")
 
 // - Стартовая страница
-const Home: React.FC =() => {
+export default function  Home() {
   const api = new Api()
 
   const [games, setGames] = React.useState<GameCardProps[]>([]);
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
+  const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
 
   React.useEffect(() => {
     const fetchGames = async () => {
@@ -38,5 +39,3 @@ const Home: React.FC =() => {
   );
 
 };
-
-export default Home;

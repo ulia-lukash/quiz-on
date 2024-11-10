@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/game-card.css';
 import { mdiEye } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
+import { useAuth } from '../context/authContext';
 
 export interface GameCardProps {
       start_time: string,
@@ -16,7 +17,7 @@ export interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = (game) => {
 
-  const isAuthenticated = false
+  const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
     // Format the date in Russian locale
   const dateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
