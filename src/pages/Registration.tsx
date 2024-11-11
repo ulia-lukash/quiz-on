@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/registration.css'
 import { useLocation } from 'react-router-dom';
-import { mdiClockTimeThree, mdiMapMarker, mdiAlert } from '@mdi/js'; // Import icons
-import Icon from '@mdi/react'; // Import Icon component
+import { mdiClockTimeThree, mdiMapMarker, mdiAlert } from '@mdi/js';
+import Icon from '@mdi/react';
 import { Api } from '../api/api';
+// @ts-ignore
+import InputMask from 'react-input-mask';
 
 // - Регистрация на игру
 export default function Registration() {
@@ -141,15 +143,36 @@ export default function Registration() {
           <div className="block-text">
             {field.title} <span className="star">*</span>
           </div>
-          <input
-            name={field.name}  // Dynamically set the field name
-            value={form[field.name as keyof typeof form] ?? ''}  // Bind the field value to the form state
-            onChange={handleInputChange}  // Use the generic change handler
-            required={!['team_id', 'group_name'].includes(field.name)}
-            className={`input ${(formErrors as Record<string, boolean>)[field.name] ? 'error' : ''}`}  // Conditionally apply error class
-            type={field.name === 'players_amount' ? 'number' : 'text'}
-            placeholder={field.placeholder}
-          />
+          {field.name === 'phone' ? (
+            <InputMask
+              mask="8(999)999-99-99"
+              value={form[field.name as keyof typeof form] ?? ''}
+              onChange={handleInputChange}
+            >
+              {(inputProps: any) => (
+                <input
+                  {...inputProps}
+                  name={field.name}
+                  id={field.name}
+                  required={!['team_id', 'group_name'].includes(field.name)}
+                  className={`input ${(formErrors as Record<string, boolean>)[field.name] ? 'error' : ''}`}
+                  type="text"
+                  placeholder={field.placeholder}
+                />
+              )}
+            </InputMask>
+          ) : (
+            <input
+              name={field.name}
+              value={form[field.name as keyof typeof form] ?? ''}
+              onChange={handleInputChange}
+              id={field.name}
+              required={!['team_id', 'group_name'].includes(field.name)}
+              className={`input ${(formErrors as Record<string, boolean>)[field.name] ? 'error' : ''}`}
+              type={['players_amount', 'phone'].includes(field.name) ? 'number' : 'text'}
+              placeholder={field.placeholder}
+            />
+          )}
           {((formErrors as Record<string, boolean>)[field.name]) && (
             <div className="error-message">This field is required.</div>
           )}

@@ -7,3 +7,12 @@
     width: 95%;
     margin: 0 auto;
 }
+
+.no-games-card {
+    margin: 0 auto;
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+    width: 55%;
+}

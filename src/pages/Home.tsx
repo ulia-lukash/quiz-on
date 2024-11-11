@@ -32,7 +32,12 @@ export default function  Home() {
           <button className="w-full bg-dark border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1">Создать игру</button>
         </Link>
       )}
-      {games.map((game) => (
+      {games.length === 0 && !isAuthenticated && (
+        <div className="no-games-card">
+          Нет игр
+        </div>
+      )}
+      {games.length > 0 &&games.map((game) => (
         <GameCard key={game.id} {...game} />
       ))}
     </div>
