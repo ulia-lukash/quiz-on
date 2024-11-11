@@ -8,6 +8,7 @@
     align-items: flex-start;
     position: relative;
     width: 97%;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -132,4 +133,36 @@ form {
   background-color: #f4da6a;
   border-radius: 18px;
   z-index: 1;
+}
+
+@media(min-width: 550px) {
+  .register-header {
+    font-size: 30px;
+  }
+
+  .game-num {
+    font-size: 30px;
+  }
+
+  .info-text {
+    font-size: 20px;
+  }
+
+  .block-input {
+    margin-top: 20px;
+    height: 70px;
+  }
+
+  .block-text {
+    font-size: 20px;
+  }
+  .input {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  .reg-btn {
+    font-size: 20px;
+    height: 50px;
+  }
 }

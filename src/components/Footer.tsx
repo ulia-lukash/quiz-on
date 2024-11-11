@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/footer.css';
 export default function Footer() {
   return (
-    <footer className="bg-primary p-4 mt-10 justify-center">
+    <footer className="p-4 mt-10 justify-center">
       <div className="w-full">
         <img className="logo-pic" src="/assets/images/new-logo.png" alt="" />
       </div>

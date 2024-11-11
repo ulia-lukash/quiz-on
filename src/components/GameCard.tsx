@@ -72,13 +72,13 @@ const GameCard: React.FC<GameCardProps> = (game) => {
               </div>
               {isAuthenticated && (
                 <Link to={`/participants?game_id=${game.id}`} className='full-width'>
-                  <button className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>список участников</button>
+                  <button className='reg-button bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>список участников</button>
                 </Link>
               )}
               {!isAuthenticated && (
                 <Link to={`/registration?game_id=${game.id}`} className='full-width'>
                   <button 
-                  className='bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'
+                  className='reg-button bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'
                   disabled={!registration_open}
                   >регистрация</button>
                 </Link>

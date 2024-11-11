@@ -9,6 +9,7 @@
     position: relative;
     margin: 80px auto;
     width: 97%;
+    max-width: 900px;
 }
 
 .auth-header {
@@ -16,4 +17,10 @@
     font-family: ProductSans;
     width: 90%;
     text-align: left;
+}
+
+@media(min-width: 550px) {
+    .auth-header {
+        font-size: 30px;
+    }
 }

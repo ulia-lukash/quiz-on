@@ -25,7 +25,7 @@ export default function Auth() {
             value={username} 
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="input" 
+            className="input py-5" 
             type="text"
             placeholder="Логин"
           />
@@ -35,14 +35,13 @@ export default function Auth() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            
-            className="input" 
+            className="input py-5" 
             type="text"
             placeholder="Пароль"
           />
           
 
-          <button type="submit" className="reg-btn my-5">
+          <button type="submit" className="reg-btn my-5 uppercase">
             Войти
           </button>
       </form>

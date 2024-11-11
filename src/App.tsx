@@ -30,7 +30,7 @@ export default function App() {
   return (
     <div className='w-full'>
       <Header />
-      <div className="app bg-primary flex flex-col items-center">
+      <div className="app bg-dark flex flex-col items-center">
 
         {/* Routes */}
         <div className="app-content mt-6 w-full">

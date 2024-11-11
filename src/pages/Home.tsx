@@ -26,7 +26,7 @@ export default function  Home() {
   }, []);
 
   return (
-    <div className="games-list bg-primary flex flex-col items-center">
+    <div className="games-list flex flex-col items-center">
       {isAuthenticated && (
         <Link to="/create-game" className="create-button">
           <button className="w-full bg-dark border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1">Создать игру</button>
@@ -37,7 +37,7 @@ export default function  Home() {
           Нет игр
         </div>
       )}
-      {games.length > 0 &&games.map((game) => (
+      {games.length > 0 && games.map((game) => (
         <GameCard key={game.id} {...game} />
       ))}
     </div>

@@ -5,7 +5,7 @@ import Icon from '@mdi/react'; // Import Icon component
 import '../styles/header.css';
 export default function Header() {
   return (
-    <header className="bg-primary w-full p-4 flex items-center justify-between header">
+    <header className="bg-dark w-full p-4 flex items-center justify-between header">
 
       <Link to="/">
         <img

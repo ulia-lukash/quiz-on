@@ -60,11 +60,12 @@
 
 @media(min-width: 481px) {
     .outer-container {
-        height: 500px;
+        height: 400px;
+        width: 500px;
     }
 
     .inner-container {
-        height: 440px;
+        height: 340px;
     }
 
     .top-border {
@@ -73,6 +74,10 @@
 
     .top-border-text {
         font-size: 22px !important;
+    }
+
+    .reg-button {
+        margin-top: 1.75rem !important;
     }
     
 }

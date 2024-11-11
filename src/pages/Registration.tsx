@@ -179,7 +179,7 @@ export default function Registration() {
         </div>
       ))}
       
-        <button type="submit" className="reg-btn my-5">
+        <button type="submit" className="reg-btn my-5 uppercase">
           Зарегистрироваться
         </button>
 
