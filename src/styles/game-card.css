@@ -31,12 +31,6 @@
     z-index: 1; /* Ensure it stays on top of the inner container */
 }
 
-.top-border-text {
-    color: white; /* Text color for the top border */
-    font-weight: bold;
-    font-size: 16px; /* Adjust size as necessary */
-}
-
 .content {
     border-radius: 30px;
     padding: 10px; /* Padding for content */
@@ -61,4 +55,24 @@
 
 .full-width {
     width: 97%;
+}
+
+
+@media(min-width: 481px) {
+    .outer-container {
+        height: 500px;
+    }
+
+    .inner-container {
+        height: 440px;
+    }
+
+    .top-border {
+        height: 60px
+    }
+
+    .top-border-text {
+        font-size: 22px !important;
+    }
+    
 }

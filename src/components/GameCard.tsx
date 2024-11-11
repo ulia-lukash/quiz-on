@@ -49,8 +49,8 @@ const GameCard: React.FC<GameCardProps> = (game) => {
   return (
     <div className="outer-container my-8 mx-2">
         <div className="top-border flex justify-between items-center">            
-            <div className='left-side w-1/2 text-center uppercase font-bold text-xl'><p>{formattedDate}</p></div>
-            <div className='right-side w-1/2  text-center uppercase font-bold text-xl'><p>{weekday}</p></div>
+            <div className='left-side w-1/2 text-center uppercase font-bold text-xl top-border-text'><p>{formattedDate}</p></div>
+            <div className='right-side w-1/2  text-center uppercase font-bold text-xl  top-border-text'><p>{weekday}</p></div>
         </div>
         <div className="inner-container bg-primary">
           <div className="content bg-primary">

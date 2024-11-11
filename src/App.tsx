@@ -33,7 +33,7 @@ export default function App() {
       <div className="app bg-primary flex flex-col items-center">
 
         {/* Routes */}
-        <div className="mt-6 w-full">
+        <div className="app-content mt-6 w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />

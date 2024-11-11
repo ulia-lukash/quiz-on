@@ -19,7 +19,7 @@ export default function Footer() {
         </a>
       </div>
       <div className="w-full copyright">© 2024 КвизON</div>
-      <div>
+      <div className="link mt-5">
         <a className="link" href="https://bmstu.ru/about/obrabotka-dannyh" target="_blank" rel="noopener noreferrer">СОГЛАШЕНИЕ ОБ ОБРАБОТКЕ ПЕРСОНАЛЬНЫХ ДАННЫХ</a>
       </div>
     </footer>

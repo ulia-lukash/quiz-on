@@ -2,3 +2,32 @@
     max-width: 480px;
     margin: 0 auto;
 }
+
+.header__logo-image {
+    width: auto;
+    height: 2.5rem;
+}
+
+.header__account-icon {
+    width: 1.95rem;
+    height: 1.95rem;
+}
+
+@media(min-width: 481px) {
+    .header {
+        max-width: 100vw;
+        margin: 0 auto;
+    }
+
+    .header__logo-image {
+        width: auto;
+        height: 5rem;
+        margin: 30px;
+    }
+
+    .header__account-icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 30px;
+    }
+}

@@ -16,3 +16,20 @@
     text-align: center;
     width: 55%;
 }
+
+@media(min-width: 481px) {
+    .games-list {
+        /* width: 480px; */
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+/* TODO: create button for bigger screens */
+    .create-button {
+        display: none;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}

@@ -11,12 +11,12 @@ export default function Header() {
         <img
           src="/assets/images/new-logo.png"
           alt="Logo"
-          className="h-10 w-auto"
+          className="header__logo-image"
         />
       </Link>
 
       <Link to="/auth">
-        <Icon path={mdiAccountCogOutline} size={1.3} color="#e0ac59" />
+        <Icon path={mdiAccountCogOutline} className="header__account-icon" color="#e0ac59" />
       </Link>
 
     </header>
