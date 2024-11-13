@@ -1,7 +1,7 @@
-import { GameCardProps } from "../components/GameCard";
+import { Game } from "../components/GameCard";
 
 export class GameApi {
-    async getAll(): Promise<GameCardProps[]> {
+    async getAll(): Promise<Game[]> {
         
         try {
             const response = await fetch(`http://localhost:8080/games`, {
@@ -83,15 +83,6 @@ export class GameApi {
             // throw error;
         }
     }
-}
-
-type Game = {
-    start_time: Date,
-    location: string,
-    name: string,
-    main_amount: number,
-    reserve_amount: number,
-    registartion_open_time: Date
 }
 
 type Team = {

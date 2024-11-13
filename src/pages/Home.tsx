@@ -1,5 +1,5 @@
 import React from 'react';
-import GameCard, { GameCardProps } from '../components/GameCard';
+import GameCard, { Game } from '../components/GameCard';
 import '../styles/games-list.css'
 import { Link } from 'react-router-dom';
 import { Api } from '../api/api';
@@ -10,7 +10,7 @@ const date = new Date("2024-06-04T18:00:00+03:00")
 export default function  Home() {
   const api = new Api()
 
-  const [games, setGames] = React.useState<GameCardProps[]>([]);
+  const [games, setGames] = React.useState<Game[]>([]);
   const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
 
   React.useEffect(() => {
@@ -27,18 +27,13 @@ export default function  Home() {
 
   return (
     <div className="games-list flex flex-col items-center">
-      {isAuthenticated && (
-        <Link to="/create-game" className="create-button">
-          <button className="w-full bg-dark border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1">Создать игру</button>
-        </Link>
-      )}
       {games.length === 0 && !isAuthenticated && (
         <div className="no-games-card">
           Нет игр
         </div>
       )}
-      {games.length > 0 && games.map((game) => (
-        <GameCard key={game.id} {...game} />
+      {games.length > 0 && games.map((game: Game) => (
+        <GameCard game={game} />
       ))}
     </div>
   );

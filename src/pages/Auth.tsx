@@ -17,7 +17,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="auth-card items-center py-4">
+    <div className="auth-card items-center pt-7 pb-4">
       <div className="auth-header text-white font-bold">ВОЙТИ</div>
       <form onSubmit={handleSubmit} className="">
         <input
@@ -25,7 +25,7 @@ export default function Auth() {
             value={username} 
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="input py-5" 
+            className="input py-6 text-2xl" 
             type="text"
             placeholder="Логин"
           />
@@ -35,7 +35,7 @@ export default function Auth() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="input py-5" 
+            className="input py-6 text-2xl" 
             type="text"
             placeholder="Пароль"
           />

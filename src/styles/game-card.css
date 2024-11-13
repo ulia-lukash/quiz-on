@@ -9,37 +9,67 @@
     position: relative;
 }
 
+.outer-container.registration-closed::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc80;
+    border-radius: inherit;
+    z-index: 3;
+}
+
+.outer-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+.countdown {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);;
+    color: #fff;
+    background-color: #ffffff70;
+    padding: 10px 20px;
+    border-radius: 8px;
+    height: 50px;
+    width: 100%;
+    z-index: 4; 
+    text-align: center;
+}
 .inner-container {
     border-radius: 30px;
-    width: 100%; /* Set width to your desired size */
-    height: 305px; /* Set height to your desired size */
-    padding: 0; /* Reset inner padding so the top border does not get extra space */
+    width: 100%;
+    height: 305px;
+    padding: 0;
     position: relative;
 }
 
 .top-border {
-    height: 47px; /* Height of the thick orange top border */
-    width: 100%; /* Full width */
+    height: 47px;
+    width: 100%;
     position: absolute;
-    top: 0; /* Position it at the very top of the outer container */
+    top: 0;
     left: 0;
     border-top-left-radius: 30px;
-    border-top-right-radius: 30px; /* Match the border radius */
+    border-top-right-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Ensure it stays on top of the inner container */
 }
 
 .content {
     border-radius: 30px;
-    padding: 10px; /* Padding for content */
-    overflow: hidden; /* Make sure no content overflows */
+    padding: 10px;
+    overflow: hidden;
     display: flex;
     margin-top: 1.5%;
-    flex-direction: column; /* Align child elements vertically */
-    justify-content: flex-start; /* Align inner content to the top */
-    align-items: center; /* Center inner content horizontally */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .inner-content {
@@ -55,6 +85,14 @@
 
 .full-width {
     width: 97%;
+}
+
+.registration-closed {
+    background-color: #ffffff30;
+    z-index: 2;
+    
+    height: 350px;
+    border-radius: 30px;
 }
 
 

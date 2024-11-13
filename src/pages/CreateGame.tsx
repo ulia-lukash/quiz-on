@@ -75,6 +75,14 @@ export default function CreateGame() {
       };
       console.log('Form submitted:', formData);
       await api.game.create(formData)
+      setForm({
+        start_time: null,
+        location: 'МГТУ им. Н.Э.Баумана каб. 345',
+        name: '',
+        main_amount: 0,
+        reserve_amount: 0,
+        registartion_open_time: null,
+      })
     }
   };
 
