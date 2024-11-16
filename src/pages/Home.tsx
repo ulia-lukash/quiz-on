@@ -26,15 +26,15 @@ export default function  Home() {
   }, []);
 
   return (
-    <div className="games-list flex flex-col items-center">
-      {games.length === 0 && !isAuthenticated && (
-        <div className="no-games-card">
-          Нет игр
-        </div>
-      )}
-      {games.length > 0 && games.map((game: Game) => (
-        <GameCard game={game} />
-      ))}
+    <div className="games-list d-flex flex-column align-items-center">
+       {games.length === 0 && !isAuthenticated && (
+         <div className="no-games-card">
+           Нет игр
+         </div>
+       )}
+       {games.length > 0 && games.map((game: Game) => (
+         <GameCard game={game} />
+       ))}
     </div>
   );
 

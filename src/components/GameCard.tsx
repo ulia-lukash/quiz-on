@@ -5,6 +5,7 @@ import { mdiEye } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import { useAuth } from '../context/authContext';
 import Countdown from './Countdown';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 
 export type GameCardProps = {
     game: Game
@@ -42,41 +43,45 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
 
   return (
     <div>
-      <div id="game-card" className={`outer-container my-8 mx-2 ${registrationAvailable ? "" : "registration-closed"}`}>
+      <div id="game-card" className={`game-card__outer-container ${registrationAvailable ? "" : "registration-closed"}`}>
           <div className='countdown'>
             <Countdown targetDate={registration_open_time.toISOString()} />
           </div>
-          <div className="top-border flex justify-between items-center">            
-              <div className='left-side w-1/2 text-center uppercase font-bold text-xl top-border-text'><p>{formattedDate}</p></div>
-              <div className='right-side w-1/2  text-center uppercase font-bold text-xl  top-border-text'><p>{weekday}</p></div>
+          <div className="top-border d-flex justify-content-center align-items-center">            
+            <Col className="text-center text-uppercase fw-bold text-xl">
+              {formattedDate}
+            </Col>
+            <Col className="text-center text-uppercase fw-bold text-xl">
+              {weekday}
+            </Col>
           </div>
-          <div className="inner-container bg-primary">
-            <div className="content bg-primary">
-                <div className='inner-content p-5'>
-                    <div className='uppercase font-bold text-start text-xl text-white'>бауманская лига</div>
-                    <div className='uppercase font-bold text-start text-2xl text-secondary border-t border-t-2 border-secondary mt-3'>квизон №{game.id}</div>
+          <div className="inner-container p-1">
+            <div className="content full-width h-100">
+                <div className='inner-content p-4 w-100'>
+                    <div className='bold text-uppercase text-start fs-5 text-white'>бауманская лига</div>
+                    <div className='bold text-uppercase text-start fs-4 mt-3 pt-2 card-separator'>квизон №{game.id}</div>
                 </div>
-                <div className='full-width flex justify-between gap-5 items-center mt-3'>
-                    <div className='time-content left-side w-1/2 p-5'>
-                        <div className='uppercase font-bold text-start text-3xl text-white'>{time}</div>
-                        <div className='time-title uppercase font-bold text-nowrap text-start text-secondary'>начало игры</div>
+                <div className='w-100 d-flex justify-content-between align-items-center mt-3 gap-2'>
+                    <div className='time-content p-3'>
+                        <div className='text-uppercase fw-bold text-start text-white'>{time}</div>
+                        <div className='time-title text-uppercase fw-bold text-nowrap text-start yellow-text'>начало игры</div>
                     </div>
-                    <div className='time-content right-side w-1/2 p-5'>
-                      <div className='uppercase font-bold text-start text-3xl text-white'>FREE</div>
-                      <div className='time-title uppercase font-bold text-nowrap text-start text-secondary'>с команды</div>
+                    <div className='time-content p-3'>
+                      <div className='uppercase fw-bold text-start text-white'>FREE</div>
+                      <div className='time-title text-uppercase fw-bold text-nowrap text-start yellow-text'>с команды</div>
                     </div>
                     
                     
                 </div>
                 {isAuthenticated && (
                   <Link to={`/participants?game_id=${game.id}`} className='full-width'>
-                    <button className='reg-button bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'>список участников</button>
+                    <button className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'>список участников</button>
                   </Link>
                 )}
                 {!isAuthenticated && (
                   <Link to={`/registration?game_id=${game.id}`} className='full-width'>
                     <button 
-                    className='reg-button bg-dark full-width border border-2 border-secondary rounded-full uppercase text-white font-bold mt-3 text-lg px-3 py-1'
+                    className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'
                     disabled={!registration_open}
                     >регистрация</button>
                   </Link>

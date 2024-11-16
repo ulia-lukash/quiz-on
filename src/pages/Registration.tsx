@@ -11,8 +11,6 @@ import InputMask from 'react-input-mask';
 export default function Registration() {
 
   const api = new Api()
-
-  const showModal = false;
   
   const location = useLocation();
   // Access query parameters
@@ -106,24 +104,20 @@ export default function Registration() {
   };
 
   return (
-    <div className="registration-card items-center py-4">
-      {showModal && (
-        <div className="modal">
+    <div className="registration-card align-items-center py-4">
 
-        </div>
-      )}
-      <div className="register-header text-white font-bold">РЕГИСТРАЦИЯ НА ИГРУ</div>
-      <div className="game-num font-bold">{getOrdinal(nidNumber)} игра Бауманской лиги 24/25</div>
+      <div className="register-header text-white fw-bold">РЕГИСТРАЦИЯ НА ИГРУ</div>
+      <div className="game-num fw-bold">{getOrdinal(nidNumber)} игра Бауманской лиги 24/25</div>
       <div className='info-container'>
-        <div className="flex items-center my-1">
+        <div className="d-flex align-items-center my-1">
           <Icon path={mdiClockTimeThree} size={1} color="#e0ac59" />
           <div className="info-text">23 октября, СР 19:00</div>
         </div>
-        <div className="flex items-center my-1">
+        <div className="d-flex align-items-center my-1">
           <Icon path={mdiMapMarker} size={1} color="#e0ac59" />
           <div className="info-text">345 аудитория (ГУК МГТУ им. Н.Э. Баумана)</div>
         </div>
-        <div className="flex items-center my-1">
+        <div className="d-flex align-items-center my-1">
           <Icon path={mdiAlert} size={1} color="#e0ac59" />
           <div className="info-text">Регистрируется только капитан команды</div>
         </div>

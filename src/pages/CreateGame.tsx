@@ -87,7 +87,7 @@ export default function CreateGame() {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center py-4 create-game-card'>
+    <div className='flex flex-col justify-content-center align-items-center py-4 create-game-card'>
       <form onSubmit={handleSubmit} className="">
       {[
         { name: 'start_time', title:'ДАТА И ВРЕМЯ ИГРЫ', placeholder: '12.12.2023 12:00' },

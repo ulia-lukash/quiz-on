@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './styles/tailwind.css';
+import './styles/common.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { HashRouter as Router } from 'react-router-dom';
 
 import { AuthProvider } from './context/authContext';
