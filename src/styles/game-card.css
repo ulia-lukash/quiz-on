@@ -1,6 +1,7 @@
 .game-card__outer-container {
     background-color: #e0ac59 !important; /* Dark blue background */
     border-radius: 30px !important;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.383);
     padding: 2px; /* Make space for the orange border */
     display: flex;
     justify-content: center; /* Center inner container horizontally */

@@ -4,7 +4,7 @@ export class GameApi {
     async getAll(): Promise<Game[]> {
         
         try {
-            const response = await fetch(`http://localhost:8080/games`, {
+            const response = await fetch(`http://localhost:8080/games?page=1&per_page=100`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -25,7 +25,7 @@ export class GameApi {
 
     async create(game: Game) {
         try {
-            const response = await fetch(`http://localhost:8080/create-game`, {
+            const response = await fetch(`http://localhost:8080/game`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -46,7 +46,7 @@ export class GameApi {
 
     async getRegistrations(game_id: number) {
         try {
-            const response = await fetch(`http://localhost:8080/registrations?game_id=${game_id}`, {
+            const response = await fetch(`http://localhost:8080/games/${game_id}/registrations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 

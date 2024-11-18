@@ -1,39 +1,39 @@
 h1 {
-    padding-bottom: 3vh;
-    font-family: ProductSans;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 36px;
-    letter-spacing: 2px;
-    text-align: center;
-    color: white;
+    padding-bottom: 3vh !important;
+    font-family: ProductSans !important;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    line-height: 36px !important;
+    letter-spacing: 2px !important;
+    text-align: center !important;
+    color: white !important;
 }
 table {
-    background: #0f1a2e;
-    border-radius: 15px;
-    border-collapse: collapse;
-    margin: 0 auto;
-    width: 97%;
-    overflow-x: auto;
+    background-color: #0f1a2e !important;
+    border-radius: 15px !important;
+    border-collapse: collapse !important;
+    margin: 0 auto !important;
+    width: 97% !important;
+    overflow-x: auto !important;
 }
 th {
-    font-family: ProductSans;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: left;
-    color: #e0ac59;
-    padding: 10px;
+    font-family: ProductSans !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    letter-spacing: 0px !important;
+    text-align: left !important;
+    color: #e0ac59 !important;
+    padding: 10p !important;
 }
 tbody {
-    font-family: ProductSans;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: left;
-    color: white;
+    font-family: ProductSans !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0px !important;
+    text-align: left !important;
+    color: white !important;
 }
 
 .container {
@@ -41,6 +41,6 @@ tbody {
 }
 
 td {
-    border-bottom: 1px solid #ffffff50;
-    text-align: center;
+    border-bottom: 1px solid #ffffff50 !important;
+    text-align: center !important;
 }

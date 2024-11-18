@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { SetStateAction, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../context/authContext';
-
+// import { useAuth } from '../context/authContext';
+import { Api } from '../api/api';
 interface ProtectedRouteProps {
   children: React.ReactElement;
   openModal: Function
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, openModal }) => {
-  const { isAuthenticated } = useAuth();
+
+  const api = new Api()
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const check = await api.auth();
+      setIsAuthenticated(check as SetStateAction<boolean>)
+    }
+    checkAuth()
+  }, [api])
 
   if (!isAuthenticated) {
     openModal()

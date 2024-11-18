@@ -13,7 +13,7 @@ export default function CreateGame() {
     name: '',
     main_amount: 0,
     reserve_amount: 0,
-    registartion_open_time: null,
+    registration_open_time: null,
   });
 
   // State to handle errors (you can use a more complex validation object)
@@ -23,7 +23,7 @@ export default function CreateGame() {
     // name: false,
     main_amount: false,
     reserve_amount: false,
-    registartion_open_time: false,
+    registration_open_time: false,
   });
 
   // Generic handler to update form fields dynamically
@@ -51,7 +51,7 @@ export default function CreateGame() {
       location: form.location.trim() === '',
       main_amount: form.main_amount === null,
       reserve_amount: form.reserve_amount === null,
-      registartion_open_time: form.registartion_open_time === null,
+      registration_open_time: form.registration_open_time === null,
     };
 
     setFormErrors(errors);
@@ -69,9 +69,10 @@ export default function CreateGame() {
       const formData = {
         ...form,
         start_time: new Date(form.start_time ?? Date.now()),
-        registartion_open_time: new Date(form.registartion_open_time ?? Date.now()),
+        registration_open_time: new Date(form.registration_open_time ?? Date.now()),
         main_amount: mainAmount,
-        reserve_amount: reserve_amount
+        reserve_amount: reserve_amount,
+        name: "idk"
       };
       console.log('Form submitted:', formData);
       await api.game.create(formData)
@@ -81,26 +82,26 @@ export default function CreateGame() {
         name: '',
         main_amount: 0,
         reserve_amount: 0,
-        registartion_open_time: null,
+        registration_open_time: null,
       })
     }
   };
 
   return (
-    <div className='flex flex-col justify-content-center align-items-center py-4 create-game-card'>
+    <div className='d-flex flex-column justify-content-center align-items-center py-4 create-game-card'>
       <form onSubmit={handleSubmit} className="">
       {[
         { name: 'start_time', title:'ДАТА И ВРЕМЯ ИГРЫ', placeholder: '12.12.2023 12:00' },
         { name: 'location', title:'МЕСТО ПРОВЕДЕНИЯ', placeholder: 'МГТУ им. Н.Э.Баумана каб. 345' },
         { name: 'main_amount', title:'КОЛИЧЕСТВО УЧАСТНИКОВ', placeholder: '7' },
         { name: 'reserve_amount', title:'РЕЗЕРВ', placeholder: '7' },
-        { name: 'registartion_open_time', title:'ВРЕМЯ ОТКРЫТИЯ РЕГИСТРАЦИИ', placeholder: '12.12.2023 12:00' },
+        { name: 'registration_open_time', title:'ВРЕМЯ ОТКРЫТИЯ РЕГИСТРАЦИИ', placeholder: '12.12.2023 12:00' },
       ].map(field => (
         <div key={field.name} className='block-input'>
           <div className="block-text">
             {field.title}
           </div>
-          {!['registartion_open_time', 'start_time'].includes(field.name) && (
+          {!['registration_open_time', 'start_time'].includes(field.name) && (
             <input
               name={field.name}  // Dynamically set the field name
               value={form[field.name as keyof typeof form] ?? ''}  // Bind the field value to the form state
@@ -111,7 +112,7 @@ export default function CreateGame() {
               placeholder={field.placeholder}
             />
           )}
-          {['registartion_open_time', 'start_time'].includes(field.name) && (
+          {['registration_open_time', 'start_time'].includes(field.name) && (
             <input
               name={field.name}
               onChange={handleInputChange}

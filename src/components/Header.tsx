@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export default function Header({ onOpenDrawer }: HeaderProps) {
 
-  const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
+  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
   return (
     <header className="w-100 p-3 d-flex align-items-center justify-content-between header">

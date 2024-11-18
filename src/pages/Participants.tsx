@@ -16,7 +16,6 @@ export default function Participants() {
 
   const api = new Api();
   const [participants, setParticipants] = React.useState<TeamResponse[]>([]);
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
 
   React.useEffect(() => {
     const fetchParticipants = async () => {

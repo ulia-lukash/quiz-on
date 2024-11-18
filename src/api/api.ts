@@ -8,26 +8,51 @@ export class Api {
         this.game = new GameApi()
     }
 
-    async login(credentials: Credentials) {
+    async login(login: string, password: string) {
         try {
             const response = await fetch(`http://localhost:8080/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
                 },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify({ login, password }),
+                credentials: 'include'
             });
     
-            if (!response.ok) {
-                console.log(`HTTP error! Status: ${response.status}`);
+            if (response.ok) {
+                localStorage.setItem('isAuthenticated', 'true')
+            } else{
+                localStorage.removeItem('isAuthenticated')
             }
-            return await response.json();;
+            return response.ok
         } catch (error) {
             console.error('Error:', error);
             // throw error;
         }
     }
 
+    async auth(): Promise<Boolean> {
+        try {
+            const response = await fetch(`http://localhost:8080/auth`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json', 
+                },
+                credentials: 'include'
+            });
+    
+            if (response.ok) {
+                localStorage.setItem('isAuthenticated', 'true')
+            } else{
+                localStorage.removeItem('isAuthenticated')
+            }
+            return response.ok
+        } catch (error) {
+            console.error('Error:', error);
+            // throw error;
+        }
+        return false
+    }
 }
 
 type Credentials = {

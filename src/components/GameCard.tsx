@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/game-card.css';
 import { mdiEye } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
-import { useAuth } from '../context/authContext';
+// import { useAuth } from '../context/authContext';
 import Countdown from './Countdown';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 
@@ -17,36 +17,47 @@ export type Game = {
   name: string,
   main_amount: number,
   reserve_amount: number,
-  registartion_open_time: Date,
+  registration_open_time: Date,
   id?: number;
 }
 
 
 const GameCard: React.FC<GameCardProps> = ({game}) => {
 
-  const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
+  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
   const dateOptions: Intl.DateTimeFormatOptions = { day: "numeric", month: "long" };
   const dayOptions: Intl.DateTimeFormatOptions = { weekday: "long" };
   const timeOptions: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 
   const start_time = new Date(game.start_time)
-  const registration_open_time = new Date(game.registartion_open_time)
+  const registration_open_time = new Date(game.registration_open_time)
 
   const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(start_time);
   const weekday = new Intl.DateTimeFormat("ru-RU", dayOptions).format(start_time);
   const time = new Intl.DateTimeFormat("ru-RU", timeOptions).format(start_time);
 
-  const registration_open = start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now())
 
-  const [registrationAvailable, setRegistrationAvailable] = useState(!registration_open);
+  const [registration_open, setRegistrationOpen] = useState(start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now()));
+  const registrationAvailable = !registration_open
 
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRegistrationOpen(start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now()));
+    }, 1000);
+  })
+  
   return (
     <div>
       <div id="game-card" className={`game-card__outer-container ${registrationAvailable ? "" : "registration-closed"}`}>
-          <div className='countdown'>
-            <Countdown targetDate={registration_open_time.toISOString()} />
-          </div>
+          {!registration_open && (
+            <div className='countdown'>
+              <Countdown registration_open_time={registration_open_time.toISOString()} start_time={start_time.toISOString()}
+              />
+            </div>
+          )}
+         
           <div className="top-border d-flex justify-content-center align-items-center">            
             <Col className="text-center text-uppercase fw-bold text-xl">
               {formattedDate}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,23 +19,22 @@ import Button from 'react-bootstrap/Button';
 
 import { mdiClose, mdiLogin } from '@mdi/js';
 import Icon from '@mdi/react';
-import { useAuth } from './context/authContext';
+// import { useAuth } from './context/authContext';
+import { Api } from './api/api';
 
 export default function App() {
 
-  const { login } = useAuth();
+  const api = new Api()
   
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  console.log('showModal:', showModal);
+  console.log('showModal = ', showModal)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const closeModal = () => {
-    console.log('closeModal called');
-    setShowModal(false);
-    
-  }
+  const closeModal = () => setShowModal(false);
   const openModal = () => setShowModal(true);
 
   const location = useLocation();
@@ -47,11 +46,18 @@ export default function App() {
   const handlePasswordChange = (e: any) => setPassword(e.target.value);
 
   useEffect(() => {
-    if (location.pathname === '/participants') {
-      document.body.classList.add('full-width-body');
-    } else {
-      document.body.classList.remove('full-width-body');
-    }
+    const fetchData = async () => {
+      const checkAuth = await api.auth();
+      setIsAuthenticated(checkAuth as SetStateAction<boolean>);
+      if (location.pathname === '/participants') {
+        document.body.classList.add('full-width-body');
+      } else {
+        document.body.classList.remove('full-width-body');
+      }
+      console.log('showModal = ', showModal)
+    };
+  
+    fetchData();
   }, [location]);
 
   const loginButtonClick = () => {
@@ -61,8 +67,9 @@ export default function App() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await login(username, password);
-    closeModal();
+    const result = await api.login(username, password);
+    setIsAuthenticated(result as SetStateAction<boolean>)
+    closeModal()
   }
 
 
@@ -143,7 +150,3 @@ export default function App() {
     </>
   );
 };
-
-function login(username: string, password: string) {
-  throw new Error('Function not implemented.');
-}
