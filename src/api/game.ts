@@ -66,7 +66,7 @@ export class GameApi {
 
     async register(teamToRegister: Team) {
         try {
-            const response = await fetch(`http://localhost:8080/register`, {
+            const response = await fetch(`http://localhost:8080/registration`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 

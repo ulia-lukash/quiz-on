@@ -1,3 +1,6 @@
+a {
+    text-decoration: none !important;
+}
 .app {
     max-width: 480px;
     display: flex;
@@ -39,7 +42,7 @@
 
 .login-btn-text {
     color: #e0ac59;
-    margin-left: 4px;
+    margin-left: 20px;
 }
 @media(min-width: 481px) {
     .app {

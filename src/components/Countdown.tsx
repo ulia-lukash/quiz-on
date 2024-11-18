@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { set } from 'vue/types/umd';
 
 type CountdownProps = {
   registration_open_time: string;

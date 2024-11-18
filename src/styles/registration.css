@@ -121,6 +121,12 @@ form {
   .error-message {
     @apply text-red-500 text-sm;
   }
+  .modal-content {
+    width: 95%;
+    max-width: 900px;
+  }
+
+  
 
 @media(min-width: 550px) {
   .register-header {
@@ -151,5 +157,25 @@ form {
   .reg-btn {
     font-size: 20px;
     height: 40px;
+  }
+}
+
+@media(min-width: 790px) {
+
+  .input {
+    height: 45px;
+  }
+
+  .reg-btn {
+    font-size: 22px;
+    height: 45px;
+  }
+
+  .modal-title {
+    font-size: 30px !important;
+  }
+
+  .modal-body {
+    font-size: 30px !important;
   }
 }

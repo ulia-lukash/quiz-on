@@ -6,6 +6,7 @@ import Icon from '@mdi/react'; // Import Icon component
 // import { useAuth } from '../context/authContext';
 import Countdown from './Countdown';
 import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 export type GameCardProps = {
     game: Game
@@ -90,7 +91,13 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
                   </Link>
                 )}
                 {!isAuthenticated && (
-                  <Link to={`/registration?game_id=${game.id}`} className='full-width'>
+                  <Link to={{
+                    pathname: `/registration`,
+                    search: `?game_id=${game.id}`,
+                  }} 
+                  state={{ game: game }} 
+                  className='full-width'
+                  >
                     <button 
                     className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'
                     disabled={!registration_open}

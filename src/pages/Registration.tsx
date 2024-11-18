@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import '../styles/registration.css'
 import { useLocation } from 'react-router-dom';
-import { mdiClockTimeThree, mdiMapMarker, mdiAlert } from '@mdi/js';
+import { mdiClockTimeThree, mdiMapMarker, mdiAlert, mdiClose } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Api } from '../api/api';
 // @ts-ignore
 import InputMask from 'react-input-mask';
+import { Modal } from 'react-bootstrap';
+import { Game } from '../components/GameCard';
 
 // - Регистрация на игру
+
+type RegistrationProps = {
+  game: Game
+};
 export default function Registration() {
 
   const api = new Api()
   
   const location = useLocation();
   // Access query parameters
-  const queryParams = new URLSearchParams(location.search);
-  const nid = queryParams.get('game_id'); // Get 'nid' from the query param
-  const nidNumber = parseInt(nid ?? "", 10);
+  const game = location.state?.game;
+  const nidNumber = game?.id
   const ordinalMap: { [key: number]: string } = {
     1: 'Первая',
     2: 'Вторая',
@@ -32,10 +37,30 @@ export default function Registration() {
     12: 'Двенадцатая',
     // Add more if needed
   };
+
+  const dialogMap: { [key: number]: string } = {
+    1: 'первой',
+    2: 'второй',
+    3: 'третьей',
+    4: 'четвёртой',
+    5: 'пятой',
+    6: 'шестой',
+    7: 'седьмой',
+    8: 'восьмой',
+    9: 'девятой',
+    10: 'десятой',
+    11: 'одиннадцатой',
+    12: 'двенадцатой',
+    // Add more if needed
+  };
   
   const getOrdinal = (num: number) => {
     return ordinalMap[num] || 'неизвестная'; // Default for unknown numbers
   };
+
+  const getDialogMap = (num: number) => {
+    return dialogMap[num] || 'очередной';
+  }
 
   // Initialize form state
   const [form, setForm] = useState({
@@ -99,13 +124,87 @@ export default function Registration() {
       const playersAmount = Number(form.players_amount);
       const formData = { ...form, players_amount: playersAmount };
       console.log('Form submitted:', formData);
-      await api.game.register(formData);
+      const result = await api.game.register(formData);
+      switch (result.status) {
+        case "ok":
+          setShowSuccessModal(true)
+          break
+        case "reserve":
+          setShowReserveModal(true)
+          break
+        case "closed":
+          setShowTooLateModal(true)
+          break
+        default:
+          break
+      }
+      setForm({
+        game_id: nidNumber,
+        telegram: '',
+        captain_name: '',
+        group_name: '',
+        phone: '',
+        team_name: '',
+        team_id: '',
+        players_amount: 0,
+      })
     }
   };
 
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showReserveModal, setShowReserveModal] = useState(false)
+  const [showTooLateModal, setShowTooLateModal] = useState(false)
+
   return (
     <div className="registration-card align-items-center py-4">
-
+      <Modal show={showSuccessModal} className="login-modal" centered>
+        <Modal.Header className='d-flex justify-content-between'>
+          <Modal.Title>Поздравляем!</Modal.Title>
+          <button onClick={()=> setShowSuccessModal(false)} className="btn">
+            <Icon path={mdiClose} size={1} color={"#e0ac59"}></Icon>
+          </button>
+        </Modal.Header>
+        <Modal.Body className="text-white">
+          Первые задания от КвизON успешно выполнены — твоя команда зарегистрирована! 
+          <br />
+          Посмотрим, как ты справишься с другими вопросами на {getDialogMap(nidNumber)} игре Бауманской лиги КвизON. 
+          <br />
+          Напомним, что игра пройдет: 23 октября, 19:00
+          <br />
+          До встречи на игре!
+        </Modal.Body>
+      </Modal>
+      <Modal show={showReserveModal} className="login-modal" centered>
+        <Modal.Header className='d-flex justify-content-between'>
+          <Modal.Title>Ой 🙈! </Modal.Title>
+          <button onClick={()=> setShowReserveModal(false)} className="btn">
+            <Icon path={mdiClose} size={1} color={"#e0ac59"}></Icon>
+          </button>
+        </Modal.Header>
+        <Modal.Body className="text-white">
+          <div>
+          Кажется, места в основном составе закончились.
+          <br />
+          Вашу команду зарегистрировали в резерв.
+          <br />
+          Скоро с тобой обязательно свяжутся, а если места освободятся – сообщат и предложат место на игре в порядке очереди.
+          </div>
+          
+        </Modal.Body>
+      </Modal>
+      <Modal show={showTooLateModal} className="login-modal" centered>
+        <Modal.Header className='d-flex justify-content-between'>
+          <Modal.Title>Извини 🙈!</Modal.Title>
+          <button onClick={()=> setShowTooLateModal(false)} className="btn">
+            <Icon path={mdiClose} size={1} color={"#e0ac59"}></Icon>
+          </button>
+        </Modal.Header>
+        <Modal.Body className="text-white">
+          Кажется, места на игру закончились.
+          <br />
+          Не расстраивайся, в следующий раз обязательно получится!
+        </Modal.Body>
+      </Modal>
       <div className="register-header text-white fw-bold">РЕГИСТРАЦИЯ НА ИГРУ</div>
       <div className="game-num fw-bold">{getOrdinal(nidNumber)} игра Бауманской лиги 24/25</div>
       <div className='info-container'>

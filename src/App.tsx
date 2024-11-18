@@ -17,7 +17,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import { mdiClose, mdiLogin } from '@mdi/js';
+import { mdiClose, mdiLogin, mdiTabPlus, mdiLogout } from '@mdi/js';
 import Icon from '@mdi/react';
 // import { useAuth } from './context/authContext';
 import { Api } from './api/api';
@@ -63,6 +63,16 @@ export default function App() {
   const loginButtonClick = () => {
     handleClose();
     openModal();
+  }
+
+  // const logoutButtonClick = () => {
+  //   document.cookie = '';
+  //   setIsAuthenticated(false);
+  //   localStorage.removeItem('isAuthenticated');
+  // }
+
+  const createGameButtonClick = () => {
+    handleClose();
   }
 
   const handleSubmit = async (e: any) => {
@@ -114,10 +124,29 @@ export default function App() {
           </button>
         </Offcanvas.Header>
         <Offcanvas.Body className="bg-blue-900 text-white">
-          <button className="btn" onClick={loginButtonClick}>
-            <Icon path={mdiLogin} size={1} color="#e0ac59"></Icon>
-            <span className='login-btn-text'>Войти</span>
-          </button>
+          {!isAuthenticated && (
+            <button className="btn d-flex flex-row align-items-center" onClick={loginButtonClick}>
+              <Icon path={mdiLogin} size={1.5} color="#e0ac59"></Icon>
+              <div className='login-btn-text fs-2'>Войти</div>
+            </button>
+          )}
+          {isAuthenticated && (
+            <section>
+              <button className="btn d-flex flex-row align-items-center" onClick={createGameButtonClick}>
+                <Link to="/create-game" className="d-flex flex-row align-items-center">
+                  <Icon path={mdiTabPlus} size={1.5} color="#e0ac59"></Icon>
+                  <div className='login-btn-text fs-2'>Создать игру</div>
+                </Link>
+              </button>
+              {/* <button className="btn d-flex flex-row align-items-center" onClick={logoutButtonClick}>
+                <Icon path={mdiLogout} size={1.5} color="#e0ac59"></Icon>
+                <div className='login-btn-text fs-2'>Выйти</div>
+              </button> */}
+            </section>
+            
+            
+          )}
+          
         </Offcanvas.Body>
       </Offcanvas>
     
