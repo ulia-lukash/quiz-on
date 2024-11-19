@@ -7,6 +7,7 @@ import { Api } from '../api/api';
 // @ts-ignore
 import InputMask from 'react-input-mask';
 import { Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Game } from '../components/GameCard';
 
 // - Регистрация на игру
@@ -117,10 +118,13 @@ export default function Registration() {
     return !Object.values(errors).includes(true);
   };
 
+  const [blockRegisterButton, setBlockRegisterButton] = useState(false)
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setBlockRegisterButton(true)
     // Validate the form before submitting
     if (validateForm()) {
 
@@ -151,6 +155,7 @@ export default function Registration() {
         players_amount: 0,
       })
     }
+    setBlockRegisterButton(false)
   };
 
   const [showSuccessModal, setShowSuccessModal] = useState(false)
@@ -274,9 +279,9 @@ export default function Registration() {
         </div>
       ))}
       
-        <button type="submit" className="reg-btn my-5 uppercase">
+        <Button type="submit" className="reg-btn my-5 uppercase" disabled={blockRegisterButton}>
           Зарегистрироваться
-        </button>
+        </Button>
 
         <div className="agreement">
           Отправляя свои данные, вы соглашаетесь на{" "}

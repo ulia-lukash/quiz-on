@@ -83,16 +83,16 @@ form {
     color: #ffffff;
 }
 .reg-btn {
-    background-color: #182a3e;
-    border: 1.33428px solid #f4da6a;
-    border-radius: 17.3457px;
-    width: 100%;
-    height: 35px;
-    font-family: ProductSans;
-    font-weight: 700;
-    font-size: 17px;
-    color: #ffffff;
-    cursor: pointer;
+    background-color: #182a3e !important;
+    border: 1.33428px solid #f4da6a !important;
+    border-radius: 17.3457px !important;
+    width: 100% !important;
+    height: 35px !important;
+    font-family: ProductSans !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
   }
 
   .agreement {
@@ -155,8 +155,8 @@ form {
   }
 
   .reg-btn {
-    font-size: 20px;
-    height: 40px;
+    font-size: 20px !important;
+    height: 40px !important;
   }
 }
 
@@ -167,8 +167,8 @@ form {
   }
 
   .reg-btn {
-    font-size: 22px;
-    height: 45px;
+    font-size: 22px !important;
+    height: 45px !important;
   }
 
   .modal-title {
