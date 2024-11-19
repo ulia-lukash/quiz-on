@@ -57,14 +57,14 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
       case "reserve":
         return "РЕГИСТРАЦИЯ В РЕЗЕРВ"
       case "closed":
-        return "РЕГИСТРАЦИЯ НЕДОСТУПНА"
+        return "МЕСТ НЕТ"
     }
   }
   
   return (
     <div>
       <div id="game-card" className={`game-card__outer-container ${registrationAvailable ? "" : "registration-closed"}`}>
-          {!registration_open && (
+          {(!registration_open || game.registration_status === "closed") && (
             <div className='countdown'>
               <Countdown registration_open_time={registration_open_time.toISOString()} start_time={start_time.toISOString()}
               />
@@ -112,7 +112,7 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
                   >
                     <button 
                     className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'
-                    disabled={!registration_open}
+                    disabled={!registration_open || game.registration_status == 'closed'}
                     >{getButtonTitle()}</button>
                   </Link>
                 )}

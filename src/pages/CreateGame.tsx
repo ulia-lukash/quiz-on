@@ -9,7 +9,7 @@ export default function CreateGame() {
   // Initialize form state
   const [form, setForm] = useState({
     start_time: null,
-    location: 'МГТУ им. Н.Э.Баумана каб. 345',
+    location: 'МГТУ им. Н.Э.Баумана ауд. 345',
     name: '',
     main_amount: 0,
     reserve_amount: 0,
@@ -79,7 +79,7 @@ export default function CreateGame() {
       const game = await api.game.create(formData)
       setForm({
         start_time: null,
-        location: 'МГТУ им. Н.Э.Баумана каб. 345',
+        location: 'МГТУ им. Н.Э.Баумана ауд. 345',
         name: '',
         main_amount: 0,
         reserve_amount: 0,
@@ -93,7 +93,7 @@ export default function CreateGame() {
       <form onSubmit={handleSubmit} className="">
       {[
         { name: 'start_time', title:'ДАТА И ВРЕМЯ ИГРЫ', placeholder: '12.12.2023 12:00' },
-        { name: 'location', title:'МЕСТО ПРОВЕДЕНИЯ', placeholder: 'МГТУ им. Н.Э.Баумана каб. 345' },
+        { name: 'location', title:'МЕСТО ПРОВЕДЕНИЯ', placeholder: 'МГТУ им. Н.Э.Баумана ауд. 345' },
         { name: 'main_amount', title:'КОЛИЧЕСТВО УЧАСТНИКОВ', placeholder: '7' },
         { name: 'reserve_amount', title:'РЕЗЕРВ', placeholder: '7' },
         { name: 'registration_open_time', title:'ВРЕМЯ ОТКРЫТИЯ РЕГИСТРАЦИИ', placeholder: '12.12.2023 12:00' },

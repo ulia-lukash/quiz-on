@@ -56,7 +56,7 @@ export default function Countdown({start_time, registration_open_time}: Countdow
 
   return (
     <div className="text-white text-xl">
-      {isOldGame ? <span>Игра завершена!</span> : timerComponents.length ? timerComponents.join(':') : <span></span>}
+      {isOldGame ? <span>Игра завершена!</span> : timerComponents.length ? timerComponents.join(':') : <span>Места на игру закончились</span>}
     </div>
   );
 };
