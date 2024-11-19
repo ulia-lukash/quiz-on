@@ -10,7 +10,7 @@ export class Api {
 
     async login(login: string, password: string) {
         try {
-            const response = await fetch(`http://localhost:8000/login`, {
+            const response = await fetch(`https://quiz-on.ru/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -33,7 +33,7 @@ export class Api {
 
     async auth(): Promise<Boolean> {
         try {
-            const response = await fetch(`http://localhost:8000/auth`, {
+            const response = await fetch(`https://quiz-on.ru/api/auth`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 

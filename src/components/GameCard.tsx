@@ -49,7 +49,6 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
   })
 
   const getButtonTitle = () => {
-    console.log(new Date(Date.now()))
     if (registration_open_time > new Date(Date.now())) return "ОЖИДАЙТЕ"
     if (start_time < new Date(Date.now())) return "ИГРА ЗАВЕРШЕНА"
     switch(game.registration_status) {

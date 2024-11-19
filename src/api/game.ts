@@ -4,7 +4,7 @@ export class GameApi {
     async getAll(): Promise<Game[]> {
         
         try {
-            const response = await fetch(`http://localhost:8000/games?page=1&per_page=100`, {
+            const response = await fetch(`https://quiz-on.ru/api/games?page=1&per_page=100`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -25,7 +25,7 @@ export class GameApi {
 
     async create(game: Game) {
         try {
-            const response = await fetch(`http://localhost:8000/game`, {
+            const response = await fetch(`https://quiz-on.ru/api/game`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -46,7 +46,7 @@ export class GameApi {
 
     async getRegistrations(game_id: number) {
         try {
-            const response = await fetch(`http://localhost:8000/games/${game_id}/registrations`, {
+            const response = await fetch(`https://quiz-on.ru/api/games/${game_id}/registrations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -66,7 +66,7 @@ export class GameApi {
 
     async register(teamToRegister: Team) {
         try {
-            const response = await fetch(`http://localhost:8000/registration`, {
+            const response = await fetch(`https://quiz-on.ru/api/registration`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 

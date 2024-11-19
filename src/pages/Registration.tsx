@@ -24,8 +24,6 @@ export default function Registration() {
   
   const dateOptions: Intl.DateTimeFormatOptions = { day: "numeric", month: "long", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false };
   const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(new Date(game.start_time));
-  console.log('AAAAAAAAAAAAAA')
-  console.log(formattedDate)
   const nidNumber = game?.id
   const ordinalMap: { [key: number]: string } = {
     1: 'Первая',
@@ -128,7 +126,6 @@ export default function Registration() {
 
       const playersAmount = Number(form.players_amount);
       const formData = { ...form, players_amount: playersAmount };
-      console.log('Form submitted:', formData);
       const result = await api.game.register(formData);
       switch (result.status) {
         case "ok":

@@ -30,7 +30,6 @@ export default function App() {
 
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  console.log('showModal = ', showModal)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -54,7 +53,6 @@ export default function App() {
       } else {
         document.body.classList.remove('full-width-body');
       }
-      console.log('showModal = ', showModal)
     };
   
     fetchData();

@@ -76,7 +76,6 @@ export default function CreateGame() {
         reserve_amount: reserve_amount,
         name: "idk"
       };
-      console.log('Form submitted:', formData);
       const game = await api.game.create(formData)
       setForm({
         start_time: null,
