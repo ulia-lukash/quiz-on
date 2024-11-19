@@ -21,6 +21,11 @@ export default function Registration() {
   const location = useLocation();
   // Access query parameters
   const game = location.state?.game;
+  
+  const dateOptions: Intl.DateTimeFormatOptions = { day: "numeric", month: "long", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false };
+  const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(new Date(game.start_time));
+  console.log('AAAAAAAAAAAAAA')
+  console.log(formattedDate)
   const nidNumber = game?.id
   const ordinalMap: { [key: number]: string } = {
     1: 'Первая',
@@ -210,11 +215,11 @@ export default function Registration() {
       <div className='info-container'>
         <div className="d-flex align-items-center my-1">
           <Icon path={mdiClockTimeThree} size={1} color="#e0ac59" />
-          <div className="info-text">23 октября, СР 19:00</div>
+          <div className="info-text">{formattedDate}</div>
         </div>
         <div className="d-flex align-items-center my-1">
           <Icon path={mdiMapMarker} size={1} color="#e0ac59" />
-          <div className="info-text">345 аудитория (ГУК МГТУ им. Н.Э. Баумана)</div>
+          <div className="info-text">{game.location}</div>
         </div>
         <div className="d-flex align-items-center my-1">
           <Icon path={mdiAlert} size={1} color="#e0ac59" />
