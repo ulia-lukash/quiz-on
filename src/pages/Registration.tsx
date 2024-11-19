@@ -176,7 +176,7 @@ export default function Registration() {
           <br />
           Посмотрим, как ты справишься с другими вопросами на {getDialogMap(nidNumber)} игре Бауманской лиги КвизON. 
           <br />
-          Напомним, что игра пройдет: 23 октября, 19:00
+          Напомним, что игра пройдет: {formattedDate}
           <br />
           До встречи на игре!
         </Modal.Body>
