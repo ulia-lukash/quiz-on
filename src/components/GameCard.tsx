@@ -20,6 +20,7 @@ export type Game = {
   reserve_amount: number,
   registration_open_time: Date,
   id?: number;
+  registration_status?: string
 }
 
 
@@ -44,10 +45,22 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
 
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setRegistrationOpen(start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now()));
-    }, 1000);
+
   })
+
+  const getButtonTitle = () => {
+    console.log(new Date(Date.now()))
+    if (registration_open_time > new Date(Date.now())) return "ОЖИДАЙТЕ"
+    if (start_time < new Date(Date.now())) return "ИГРА ЗАВЕРШЕНА"
+    switch(game.registration_status) {
+      case "ok":
+        return "РЕГИСТРАЦИЯ"
+      case "reserve":
+        return "РЕГИСТРАЦИЯ В РЕЗЕРВ"
+      case "closed":
+        return "РЕГИСТРАЦИЯ НЕДОСТУПНА"
+    }
+  }
   
   return (
     <div>
@@ -101,7 +114,7 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
                     <button 
                     className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'
                     disabled={!registration_open}
-                    >регистрация</button>
+                    >{getButtonTitle()}</button>
                   </Link>
                 )}
                 
