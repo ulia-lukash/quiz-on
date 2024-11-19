@@ -1,5 +1,6 @@
 .games-list {
     width: 100%;
+    flex-direction: column;
 }
 
 .create-button {

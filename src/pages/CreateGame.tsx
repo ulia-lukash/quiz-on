@@ -58,6 +58,8 @@ export default function CreateGame() {
     return !Object.values(errors).includes(true);
   };
 
+  const [showCreatedModal, setShowCreatedModal] = useState(false)
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,7 +77,7 @@ export default function CreateGame() {
         name: "idk"
       };
       console.log('Form submitted:', formData);
-      await api.game.create(formData)
+      const game = await api.game.create(formData)
       setForm({
         start_time: null,
         location: 'МГТУ им. Н.Э.Баумана каб. 345',
