@@ -33,7 +33,7 @@ export default function  Home() {
          </div>
        )}
        {games.length > 0 && games.map((game: Game) => (
-         <GameCard game={game} />
+         <GameCard game={game} key={game.id} />
        ))}
     </div>
   );
