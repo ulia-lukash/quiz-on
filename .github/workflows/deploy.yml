@@ -32,4 +32,4 @@ jobs:
       run: 'echo hello > kek'
 
     - name: copy
-      run: scp -i key kek front_deployer@quiz-on.ru:/home/front_deployer/
+      run: scp -o StrictHostKeyChecking=no -i key kek front_deployer@quiz-on.ru:/home/front_deployer/
