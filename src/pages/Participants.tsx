@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { mdiDelete } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import { Api } from '../api/api';
+// @ts-ignore
+// import TableToExcel from "@linways/table-to-excel";
 
 // - Регистрация на игру
 export default function Participants() {
@@ -45,11 +47,15 @@ export default function Participants() {
     return new Intl.DateTimeFormat("ru-RU", dateOptions).format(registeredDate(date));
   }
 
+  const exportTableToExcel = () => {
+    // TableToExcel.convert(document.getElementById("table"));
+  }
+
   return(
     <div>
         <h1>УЧАСТНИКИ</h1>
         <div className="container">
-        <table className="table">
+        <table className="table" id="table">
             <thead>
             <tr>
                 <th>№</th>
@@ -83,6 +89,9 @@ export default function Participants() {
             ))}
             </tbody>
         </table>
+        <button onClick={exportTableToExcel}>
+          Экспорт в Excel
+        </button>
         </div>
     </div>
   )

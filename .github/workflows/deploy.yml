@@ -1,0 +1,47 @@
+name: tests
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: create ssh key
+      env:
+        SSH_KEY: ${{secrets.SSH_KEY}}
+      run: 'echo "$SSH_KEY" > key && chmod 400 key'
+      
+
+    - name: install, build
+      run: |
+        npm install
+        npm run build
+
+    - name: move favicon
+      run: cp public/favicon.ico dist/
+        
+    - name: move assets
+      run: cp -r public/assets dist/
+
+    - name: scp
+      run: scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
+
+    - name: ssh
+      run: ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru 'bash -s' < deploy.sh
