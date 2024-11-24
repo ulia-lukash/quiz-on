@@ -46,5 +46,5 @@ jobs:
         mv dist ${dir_name}
         scp -o StrictHostKeyChecking=no -i key -r ${dir_name} front_deployer@quiz-on.ru:/home/front_deployer/
         rm -rf /var/www/quizon_front/*
-        cp -r ${dir_name}/* /var/www/quizon_front/*
+        cp -r ${dir_name}/* /var/www/quizon_front/
 
