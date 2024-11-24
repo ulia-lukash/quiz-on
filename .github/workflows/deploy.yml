@@ -46,4 +46,4 @@ jobs:
     - name: ssh
       run: |
         ls
-        ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru 'deploy.sh'
+        ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru 'bash -s' < deploy.sh
