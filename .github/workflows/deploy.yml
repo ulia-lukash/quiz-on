@@ -43,6 +43,7 @@ jobs:
     - name: copy
       run: |
         scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
+        ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru
         dir_name=$(date +%Y-%m-%d_%H-%M-%S)
         mv dist ${dir_name}
         ls
