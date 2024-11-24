@@ -33,10 +33,12 @@ jobs:
       run: |
         npm install
         npm run build
+
+    - name: move favicon
+      run: cp public/favicon.ico dist/
+        
     - name: move assets
-      run: |
-        cp public/favicon.ico dist/
-        cp -r public/assets dist/
+      run: cp -r public/assets dist/
 
     - name: copy
       run: scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
