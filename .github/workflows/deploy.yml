@@ -32,4 +32,4 @@ jobs:
       run: 'echo hello > kek'
 
     - name: copy
-      run: scp -i key kek front_deploy@quiz-on.ru:/
+      run: scp -i key kek front_deployer@quiz-on.ru:/
