@@ -35,7 +35,7 @@ jobs:
         npm run build
     - name: move assets
       run: |
-        cp src/favicon.ico dist/
+        cp public/favicon.ico dist/
         cp -r public/assets dist/
 
     - name: copy
