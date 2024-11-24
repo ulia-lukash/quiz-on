@@ -43,7 +43,8 @@ jobs:
     - name: copy
       run: |
         dir_name=$(date +%Y-%m-%d_%H-%M-%S)
-        scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/${dir_name}
+        mv dist ${dir_name}
+        scp -o StrictHostKeyChecking=no -i key -r ${dir_name} front_deployer@quiz-on.ru:/home/front_deployer/
         rm -rf /var/www/quizon_front/*
         cp -r ${dir_name}/* /var/www/quizon_front/*
 
