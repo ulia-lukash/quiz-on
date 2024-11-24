@@ -40,15 +40,25 @@ jobs:
     - name: move assets
       run: cp -r public/assets dist/
 
-    - name: copy
+    - name: scp
+      run: scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
+
+    - name: ssh
+      run: ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru
+      
+    - name: var mv
       run: |
-        scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
-        ssh -o StrictHostKeyChecking=no -i key front_deployer@quiz-on.ru
         dir_name=$(date +%Y-%m-%d_%H-%M-%S)
         mv dist ${dir_name}
-        ls
-        rm -rf /var/www/quizon_front/*
-        cp -r ${dir_name}/* /var/www/quizon_front/
+
+    - name: ls
+      run: ls
+
+    - name: rm
+      run: rm -rf /var/www/quizon_front/*
+      
+    - name: cp
+      run: cp -r ${dir_name}/* /var/www/quizon_front/
         
 
 
