@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  deploy:
+    # services:
+    #   postgres:
+    #     image: postgres
+    #     ports:
+    #       - 5432:5432
+    #     env:
+    #       POSTGRES_PASSWORD: postgres
+    #       POSTGRES_HOST: localhost
+    #       POSTGRES_PORT: 5432
+    #       POSTGRES_HOST_AUTH_METHOD: trust
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: create ssh key
+      env:
+        SSH_KEY: ${{secrets.SSH_KEY}}
+      run: 'echo "$SSH_KEY" > key'
+      
+
+    - name: asdf
+      run: 'echo hello > kek'
+
+    - name: copy
+      run: scp -i key front_deploy@quiz-on.ru:/
