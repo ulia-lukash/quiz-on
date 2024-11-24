@@ -8,8 +8,8 @@ export class Api {
         this.game = new GameApi()
     }
 
-    // api_url = 'https://quiz-on.ru/api'
-    api_url = 'http://localhost:8000'
+    api_url = 'https://quiz-on.ru/api'
+    // api_url = 'http://localhost:8000'
 
     async login(login: string, password: string) {
         try {

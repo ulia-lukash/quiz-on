@@ -1,8 +1,8 @@
 import { Game } from "../components/GameCard";
 
 export class GameApi {
-    // api_url = 'https://quiz-on.ru/api'
-    api_url = 'http://localhost:8000'
+    api_url = 'https://quiz-on.ru/api'
+    // api_url = 'http://localhost:8000'
     async getAll(): Promise<Game[]> {
         
         try {
