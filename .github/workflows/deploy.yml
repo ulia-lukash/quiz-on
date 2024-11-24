@@ -3,33 +3,36 @@ name: tests
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
   deploy:
-    # services:
-    #   postgres:
-    #     image: postgres
-    #     ports:
-    #       - 5432:5432
-    #     env:
-    #       POSTGRES_PASSWORD: postgres
-    #       POSTGRES_HOST: localhost
-    #       POSTGRES_PORT: 5432
-    #       POSTGRES_HOST_AUTH_METHOD: trust
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 21.x]
+
     steps:
     - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
 
     - name: create ssh key
       env:
         SSH_KEY: ${{secrets.SSH_KEY}}
-      run: 'echo "$SSH_KEY" > key & chmod 400 key'
+      run: 'echo "$SSH_KEY" > key && chmod 400 key'
       
 
-    - name: asdf
-      run: 'echo hello > kek'
+    - name: install, build
+      run: |
+        npm install
+        npm run build
 
     - name: copy
-      run: scp -o StrictHostKeyChecking=no -i key kek front_deployer@quiz-on.ru:/home/front_deployer/
+      run: scp -o StrictHostKeyChecking=no -i key -r dist front_deployer@quiz-on.ru:/home/front_deployer/
