@@ -5,7 +5,7 @@ import { mdiDelete } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import { Api } from '../api/api';
 // @ts-ignore
-import TableToExcel from "@linways/table-to-excel";
+// import TableToExcel from "@linways/table-to-excel";
 
 // - Регистрация на игру
 export default function Participants() {
@@ -48,7 +48,7 @@ export default function Participants() {
   }
 
   const exportTableToExcel = () => {
-    TableToExcel.convert(document.getElementById("table"));
+    // TableToExcel.convert(document.getElementById("table"));
   }
 
   return(

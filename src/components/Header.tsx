@@ -23,7 +23,7 @@ export default function Header({ onOpenDrawer }: HeaderProps) {
           />
         </Link>
       </button>
-      
+      <h1 className='text-white'>AAAAAAAAAAAAAAA</h1>
       
       <button onClick={onOpenDrawer} className="btn">
         <Icon path={mdiViewHeadline} size={1} color="#e0ac59"  className="burger-icon"/>
