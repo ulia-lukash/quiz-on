@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DefinePlugin = require('webpack').DefinePlugin;
+const EnvironmentPlugin = require('webpack').EnvironmentPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -64,6 +66,10 @@ module.exports = (env, argv) => {
             }
           : false,
       }),
+      // new DefinePlugin({
+      //   'process.env.REACT_APP_KEK': process.env.REACT_APP_KEK,
+      // }),
+      new EnvironmentPlugin( { ...process.env } ),
       ...(isProduction
         ? [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })]
         : []),

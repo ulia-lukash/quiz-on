@@ -8,12 +8,9 @@ export class Api {
         this.game = new GameApi()
     }
 
-    // api_url = 'https://quiz-on.ru/api'
-    api_url = 'http://localhost:8000'
-
     async login(login: string, password: string) {
         try {
-            const response = await fetch(`${this.api_url}/login`, {
+            const response = await fetch(`${process.env.API_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -36,7 +33,7 @@ export class Api {
 
     async auth(): Promise<Boolean> {
         try {
-            const response = await fetch(`${this.api_url}/auth`, {
+            const response = await fetch(`${process.env.API_URL}/auth`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
