@@ -1,12 +1,10 @@
 import { Game } from "../components/GameCard";
 
 export class GameApi {
-    // api_url = 'https://quiz-on.ru/api'
-    api_url = 'http://localhost:8000'
     async getAll(): Promise<Game[]> {
         
         try {
-            const response = await fetch(`${this.api_url}/games?page=1&per_page=100`, {
+            const response = await fetch(`${process.env.API_URL}/games?page=1&per_page=100`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -27,7 +25,7 @@ export class GameApi {
 
     async create(game: Game) {
         try {
-            const response = await fetch(`${this.api_url}/game`, {
+            const response = await fetch(`${process.env.API_URL}/game`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -48,7 +46,7 @@ export class GameApi {
 
     async getRegistrations(game_id: number) {
         try {
-            const response = await fetch(`${this.api_url}/games/${game_id}/registrations`, {
+            const response = await fetch(`${process.env.API_URL}/games/${game_id}/registrations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json', 
@@ -68,7 +66,7 @@ export class GameApi {
 
     async register(teamToRegister: Team) {
         try {
-            const response = await fetch(`${this.api_url}/registration`, {
+            const response = await fetch(`${process.env.API_URL}/registration`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', 
