@@ -8,13 +8,14 @@ h1 {
     text-align: center !important;
     color: white !important;
 }
-table {
+.participants-table {
     background-color: #0f1a2e !important;
     border-radius: 15px !important;
     border-collapse: collapse !important;
     margin: 0 auto !important;
     width: 97% !important;
     overflow-x: auto !important;
+    padding: 12px;
 }
 th {
     font-family: ProductSans !important;
@@ -25,6 +26,7 @@ th {
     text-align: left !important;
     color: #e0ac59 !important;
     padding: 10p !important;
+    padding: 8px;
 }
 tbody {
     font-family: ProductSans !important;
@@ -40,7 +42,12 @@ tbody {
     margin: 0 auto;
 }
 
+.button-container {
+    margin-bottom: 15px !important;
+}
+
 td {
     border-bottom: 1px solid #ffffff50 !important;
     text-align: center !important;
+    padding: 8px;
 }
