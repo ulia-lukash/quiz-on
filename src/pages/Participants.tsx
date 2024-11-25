@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../styles/participants.css'
 import { useLocation } from 'react-router-dom';
-import { mdiDelete } from '@mdi/js'; // Import icons
+import { mdiDelete, mdiMicrosoftExcel } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 import { Api } from '../api/api';
-// @ts-ignore
-// import TableToExcel from "@linways/table-to-excel";
-
+import { Table } from 'react-bootstrap';
+import { utils, writeFileXLSX } from "xlsx";
 // - Регистрация на игру
 export default function Participants() {
 
@@ -36,6 +35,7 @@ export default function Participants() {
     month: "long",
     hour: "2-digit",
     minute: "2-digit",
+    second: "2-digit",
     hour12: false,
   };
 
@@ -48,14 +48,22 @@ export default function Participants() {
   }
 
   const exportTableToExcel = () => {
-    // TableToExcel.convert(document.getElementById("table"));
+     const wb = utils.table_to_book(tbl.current);
+     writeFileXLSX(wb, `Команды игры ${nidNumber}.xlsx`);
   }
+  const tbl = useRef(null);
 
   return(
     <div>
         <h1>УЧАСТНИКИ</h1>
+        <div className='w-100 d-flex button-container'>
+          <button className="reg-button text-white mx-auto" onClick={exportTableToExcel}>
+            <Icon path={mdiMicrosoftExcel} size={1} />
+            Export
+          </button>
+        </div>
         <div className="container">
-        <table className="table" id="table">
+        <table className="participants-table" id="table" ref={tbl}>
             <thead>
             <tr>
                 <th>№</th>
@@ -89,9 +97,6 @@ export default function Participants() {
             ))}
             </tbody>
         </table>
-        <button onClick={exportTableToExcel}>
-          Экспорт в Excel
-        </button>
         </div>
     </div>
   )
