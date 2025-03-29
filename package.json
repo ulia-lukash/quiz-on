@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "start": "API_URL=http://localhost:8000 webpack serve --mode development",
+    "build": "API_URL=https://quiz-on.ru/api webpack --mode production"
   },
   "keywords": [],
   "author": "",

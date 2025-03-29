@@ -32,7 +32,7 @@ jobs:
     - name: install, build
       run: |
         npm install
-        API_URL=https://quiz-on.ru/api npm run build
+        npm run build
 
     - name: move favicon
       run: cp public/favicon.ico dist/

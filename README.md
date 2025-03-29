@@ -10,11 +10,11 @@ $ npm install
 ## Работа над клентом
 
 ```bash
-$ API_URL=http://localhost:8000 npm start
+$ npm start
 ```
 
 ## Сборка проекта
 
 ```bash
-$ API_URL=https://quiz-on.ru/api npm run build
+$ npm run build
 ```
