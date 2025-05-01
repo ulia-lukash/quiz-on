@@ -1,0 +1,239 @@
+.our-rounds_container {
+    width: 100%;
+    margin-top: 140px;
+    height: fit-content;
+    background-color: #0E1E31;
+}
+
+.our-rounds_header {
+    width: 1124px;
+    height: 63px;
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+}
+
+.our-rounds__header-label {
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.legend__container {
+    margin-top: 65px;
+    width: 1124px;
+    display: flex;
+    justify-self: center;
+}
+
+.legend-item__container {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.legend-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.legend-label {
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0%;
+}
+
+.classic-game-circle {
+    background-color: #5EE42D;
+}
+
+.short-game-circle {
+    background-color: #DF2A9D;
+}
+
+.archive-game-circle {
+    background-color: #B6B699;
+}
+
+.horizontal-scroll {
+    width: 1124px;
+    display: flex;
+    justify-self: center;
+    margin-top: 36px;
+    height: 70px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scroll-content {
+    display: inline-flex;
+    gap: 28px;
+}
+
+.scroll-item {
+    background-color: #23364B;
+    color: #405770;
+    min-width: 452px;
+    height: 70px;
+    border-radius: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 22px;
+}
+
+.active-item {
+    background-color: #3A72B1;
+    color: white;
+}
+
+.scroll-item__label-container {
+    display: flex;
+    gap: 14px;
+}
+
+.scroll-item__font {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    text-align: right;
+    text-transform: uppercase;
+}
+.scroll-item__circles-container {
+    display: flex;
+    gap: 8px
+}
+
+.round-rules {
+    width: 1124px;
+    height: 558px;
+    display: flex;
+    justify-self: center;
+    margin-top: 30px;
+}
+
+.number-area {
+    gap: 15px;
+    width: 164px;
+}
+
+.number-area__num {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+    letter-spacing: 0%;
+    color: #F4DA6A;
+    text-align: center;
+}
+
+.number-area__caption {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white
+}
+
+.number-area__item {
+    width: 164px;
+    height: 176px;
+    padding-top: 18px;
+    padding-right: 9px;
+    padding-bottom: 28px;
+    padding-left: 9px;
+    border-radius: 28px;
+    background-color: #1C3551;
+}
+
+.question-area {
+    gap: 15px;
+    width: 548px;
+}
+
+.question-area__item {
+    width: 548px;
+    height: 164px;
+    gap: 12px;
+    border-radius: 28px;
+    padding: 18px;   
+    background-color: #1C3551;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.question-area__label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #59779A;
+    height: 22px;
+}
+
+.question-area__question {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    color: #D8D8D8;
+    height: 52px;
+}
+
+.correct-ans-badge {
+    width: fit-content;
+    padding: 0 8px;
+    height: 30px;
+    border-radius: 9px;
+    background-color: #496079;
+    color: white;
+    text-transform: uppercase;
+    align-content: center;
+    text-align: center;
+    align-self: end;
+}
+
+.rules-card {
+    width: 340px;
+    height: 448px;
+    gap: 36px;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-card__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: white;
+    width: 181px;
+    height: 88px
+}
+
+.rules-card__caption {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #ABABAB;
+}

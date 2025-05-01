@@ -3,6 +3,15 @@ import GameCard, { Game } from '../components/GameCard';
 import '../styles/games-list.css'
 import { Link } from 'react-router-dom';
 import { Api } from '../api/api';
+import FinishedGameCard from '../components/FinishedGameCard';
+import { Row, Col } from 'react-bootstrap';
+import GameFiltersCard from '../components/GameFiltersCard';
+import AdminFiltersCard from '../components/AdminFiltersCard';
+import { Button, Container, Nav, Navbar, Image, ButtonGroup, Badge } from 'react-bootstrap';
+import MainPageCard from '../components/MainPageCard';
+import GameCounter from '../components/GameCounter';
+import OurRounds from '../components/OurRounds';
+
 // import { useAuth } from '../context/authContext';
 const date = new Date("2024-06-04T18:00:00+03:00")
 
@@ -12,6 +21,11 @@ export default function  Home() {
 
   const [games, setGames] = React.useState<Game[]>([]);
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+
+  const gameFinished = (date: any) => {
+    // return new Date(date) < new Date();
+    return false
+  }
 
   React.useEffect(() => {
     const fetchGames = async () => {
@@ -26,16 +40,10 @@ export default function  Home() {
   }, []);
 
   return (
-    <div className="games-list d-flex align-items-center">
-       {games.length === 0 && !isAuthenticated && (
-         <div className="no-games-card">
-           Нет игр
-         </div>
-       )}
-       {games.length > 0 && games.map((game: Game) => (
-         <GameCard game={game} key={game.id} />
-       ))}
-    </div>
+    <Col>
+      <MainPageCard />
+      <GameCounter />
+      <OurRounds />
+    </Col>
   );
-
 };

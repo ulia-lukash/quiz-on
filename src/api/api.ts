@@ -54,8 +54,3 @@ export class Api {
         return false
     }
 }
-
-type Credentials = {
-    login: string,
-    password: string
-}

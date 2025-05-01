@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/game-card.css';
-import { mdiEye } from '@mdi/js'; // Import icons
+import { mdiEye, mdiMapCheckOutline } from '@mdi/js'; // Import icons
 import Icon from '@mdi/react'; // Import Icon component
 // import { useAuth } from '../context/authContext';
 import Countdown from './Countdown';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Row, Stack, Image, Modal } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
 export type GameCardProps = {
@@ -26,6 +26,7 @@ export type Game = {
 
 const GameCard: React.FC<GameCardProps> = ({game}) => {
 
+  const [showRegistrationModal, setShowRegistrationModal] = useState(false);
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
   const dateOptions: Intl.DateTimeFormatOptions = { day: "numeric", month: "long" };
@@ -33,95 +34,151 @@ const GameCard: React.FC<GameCardProps> = ({game}) => {
   const timeOptions: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 
   const start_time = new Date(game.start_time)
-  const registration_open_time = new Date(game.registration_open_time)
+  // const registration_open_time = new Date(game.registration_open_time)
 
   const formattedDate = new Intl.DateTimeFormat("ru-RU", dateOptions).format(start_time);
   const weekday = new Intl.DateTimeFormat("ru-RU", dayOptions).format(start_time);
   const time = new Intl.DateTimeFormat("ru-RU", timeOptions).format(start_time);
 
+  // const [registration_open, setRegistrationOpen] = useState(start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now()));
+  // const registrationAvailable = !registration_open
 
-  const [registration_open, setRegistrationOpen] = useState(start_time > new Date(Date.now()) && registration_open_time < new Date(Date.now()));
-  const registrationAvailable = !registration_open
-
-
-  useEffect(() => {
-
-  })
-
-  const getButtonTitle = () => {
-    if (registration_open_time > new Date(Date.now())) return "ОЖИДАЙТЕ"
-    if (start_time < new Date(Date.now())) return "ИГРА ЗАВЕРШЕНА"
-    switch(game.registration_status) {
-      case "ok":
-        return "РЕГИСТРАЦИЯ"
-      case "reserve":
-        return "РЕГИСТРАЦИЯ В РЕЗЕРВ"
-      case "closed":
-        return "МЕСТ НЕТ"
-    }
-  }
+  const handleClose = () => setShowRegistrationModal(false);
+  const handleShow = () => setShowRegistrationModal(true);
   
   return (
-    <div>
-      <div id="game-card" className={`game-card__outer-container ${registrationAvailable ? "" : "registration-closed"}`}>
-          {(!registration_open || game.registration_status === "closed") && (
-            <div className='countdown'>
-              <Countdown registration_open_time={registration_open_time.toISOString()} start_time={start_time.toISOString()}
-              />
-            </div>
-          )}
-         
-          <div className="top-border d-flex justify-content-center align-items-center">            
-            <Col className="text-center text-uppercase fw-bold text-xl">
-              {formattedDate}
-            </Col>
-            <Col className="text-center text-uppercase fw-bold text-xl">
-              {weekday}
-            </Col>
+  <Card className="game-card" style={{display: 'flex', flexDirection: 'row', width: '908px' }}>
+    <Modal className='registration-modal' show={showRegistrationModal} onHide={handleClose}>
+      <div className="registration-modal__title">
+        <div className="registration-title-row">
+          <div className="registration-title">Регистрация на игру</div>
+          <Button variant='unknown' className='registration-modal__close-btn'>
+            <Image src="assets/icons/Close.svg" />
+          </Button>
+        </div>
+        <div className="information-area">
+          <div className="card-information">
+            <div className="card-information__title"></div>
+            <div className="card-information__date"></div>
           </div>
-          <div className="inner-container p-1">
-            <div className="content full-width h-100">
-                <div className='inner-content p-4 w-100'>
-                    <div className='bold text-uppercase text-start fs-5 text-white'>бауманская лига</div>
-                    <div className='bold text-uppercase text-start fs-4 mt-3 pt-2 card-separator'>квизон №{game.id}</div>
-                </div>
-                <div className='w-100 d-flex justify-content-between align-items-center mt-3 gap-2'>
-                    <div className='time-content p-3'>
-                        <div className='text-uppercase fw-bold text-start text-white'>{time}</div>
-                        <div className='time-title text-uppercase fw-bold text-nowrap text-start yellow-text'>начало игры</div>
-                    </div>
-                    <div className='time-content p-3'>
-                      <div className='uppercase fw-bold text-start text-white'>FREE</div>
-                      <div className='time-title text-uppercase fw-bold text-nowrap text-start yellow-text'>с команды</div>
-                    </div>
-                    
-                    
-                </div>
-                {isAuthenticated && (
-                  <Link to={`/participants?game_id=${game.id}`} className='full-width'>
-                    <button className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'>список участников</button>
-                  </Link>
-                )}
-                {!isAuthenticated && (
-                  <Link to={{
-                    pathname: `/registration`,
-                    search: `?game_id=${game.id}`,
-                  }} 
-                  state={{ game: game }} 
-                  className='full-width'
-                  >
-                    <button 
-                    className='reg-button full-width rounded-pill text-uppercase text-white fw-bold mt-3 text-lg px-3 py-1'
-                    disabled={!registration_open || game.registration_status == 'closed'}
-                    >{getButtonTitle()}</button>
-                  </Link>
-                )}
-                
-              </div>
+          <div className="additional-info"></div>
+          <div className="reserve-warning">
+          Вы записываетесь в резерв. Если будут места, мы с вами свяжемся и позовем на игру.
           </div>
+          <input type="checkbox" checked data-toggle="toggle" data-style="ios"></input>
+        </div>
       </div>
-
+    </Modal>
+    {isAuthenticated && (
+      <div className="admin-controls">
+      <Row style={{width: '126px'}}>
+        <Col style={{padding: 0}}>
+          <Button className="edit-game-button" variant="unknown">
+            <Image src="assets/icons/Edit.svg" style={{width: '20px', height: '20px'}}/>
+          </Button>
+        </Col>
+        <Col style={{padding: 0}}>
+          <Button className="delete-game-button" variant="unknown">
+            <Image src="assets/icons/Trash.svg" style={{width: '20px', height: '20px'}}/>
+          </Button>
+        </Col>
+      </Row>
     </div>
+    )}
+    <div className="game-card__img" style={{width: '248px', position: 'relative', borderRadius: '30px 0 0 30px', overflow: 'hidden' }}>
+      <Badge bg="unknown" className="theme-badge" style={{
+          display: 'flex',
+          alignItems: 'center',
+          zIndex: 1
+        }}>Новогодняя</Badge>
+      <Image src="assets/icons/Decoration 1.svg" style={{position:'absolute', right: '0', top: '0'}} />
+      <Image src="assets/icons/Decoration 2.svg" style={{position:'absolute', left: '0', bottom: '0'}} />
+      <Image src="assets/icons/Logo.svg" roundedCircle />
+    </div>
+    <Stack direction="vertical" style={{width: '660px'}}>
+      <Card.Body className="date-header">
+        <Card.Title style={{height: '100%'}}>
+          <Stack direction="horizontal" style={{height: '100%', verticalAlign: 'center', gap: '12px'}}>
+            <div className="date-header__date">{formattedDate}</div>
+            <div className="date-header__day">{weekday}</div>
+            <div className="date-header__time ms-auto">{time}</div>
+          </Stack>
+        </Card.Title>
+      </Card.Body>
+      <Card.Body className="game-card__main">
+        <Stack className="game-card__main-stack" direction="vertical">
+          <Badge bg="unknown" className="season-badge" style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}>Сезон 2024/2025</Badge>
+          <Card className='game-description' style={{gap: '14px'}}>
+            <Card.Title style={{margin: 0}}>IV игра Бауманской Лиги</Card.Title>
+            <Card.Body style={{padding: 0}}>
+              <div className='desc-text'>Что может быть долгожданнее Нового Года? Наряжайтесь в свои лучшие костюмы и приходите с праздничным настроением на завершающую игру этого года!</div>
+              <Row style={{height: '44px', marginTop: '14px'}}>
+                <Col>
+                  <Card className="desc-card" style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '12px',
+                    height: '44px',
+                    padding: 0,
+                    alignItems: 'center'  }}>
+                    <Card.Img src="/assets/icons/Location.svg" style={{height: '32px', width: '32px'}}/>
+                    <Stack direction="vertical">
+                      <Card.Body style={{padding: 0}}>
+                        <Card.Title className="desc-card__title">Аудитория 345</Card.Title>
+                        <Card.Text className="desc-card__caption">ГЗ МГТУ им. Н.Э. Баумана</Card.Text>
+                      </Card.Body>
+                    </Stack>
+                  </Card>
+                </Col>
+                <Col>
+                  <Card className="desc-card" style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '12px',
+                    height: '44px',
+                    padding: 0,
+                    alignItems: 'center'  }}>
+                    <Card.Img src="/assets/icons/Wallet.svg" style={{height: '32px', width: '32px'}}/>
+                    <Stack direction="vertical">
+                      <Card.Body style={{padding: 0}}>
+                        <Card.Title className="desc-card__title">Бесплатно</Card.Title>
+                        <Card.Text className="desc-card__caption">с человека</Card.Text>
+                      </Card.Body>
+                    </Stack>
+                  </Card>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+          <Row>
+            <Col style={{width: '50%'}}>
+            {isAuthenticated && (
+                <Button variant="unknown" className='admin-players-button'>
+                    <Image src="/assets/icons/Players-black.svg" style={{width: '20px', height: '20px', marginRight: '8p'}}/>
+                    <span>список участников</span>
+                </Button>
+            )}
+            {
+              !isAuthenticated  && (
+                <Button variant="unknown" onClick={()=> handleShow()} className='registration-button'>Регистрация</Button>
+              )
+            }
+            </Col>
+            <Col>
+              {!isAuthenticated && (
+                <div className='caption-text full-height'>Быстрее жми, пока есть места!</div>
+              )}
+            </Col>
+          </Row>
+          
+        </Stack>
+        
+      </Card.Body>
+    </Stack>
+  </Card>
   );
 };
 

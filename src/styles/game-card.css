@@ -114,6 +114,297 @@
     background-color: #182A3E;
 }
 
+.registration-button {
+    width: 100%;
+    height: 56px;
+    border-radius: 16px !important;
+    background-color: #F4DA6A !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    line-height: 24px !important;
+    text-transform: uppercase;
+}
+
+.admin-players-button {
+    border-radius: 16px !important;
+    background-color: #F4DA6A !important;
+    color: black;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    line-height: 24px !important;
+    text-transform: uppercase;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.players-button {
+    width: 100%;
+    height: 56px;
+    border-radius: 16px !important;
+    background-color: #F4DA6A !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    line-height: 24px !important;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.game-card {
+    background-color: #0E1E31 !important;
+    width: 908px;
+    border-radius: 30px !important;
+    border: none !important;
+}
+
+.date-header {
+    background-color: #F0A773 !important;
+    border-radius: 0 30px 0 0 !important;
+    height: 66px;
+    padding: 16px 32px 16px 32px !important;
+}
+
+.game-card__main {
+    padding: 28px 32px 32px 32px !important;
+}
+
+.game-description {
+    background-color: #0E1E31 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.season-badge {
+    height: 28px !important;
+    background-color: #1C3652 !important;
+    font-weight: 400 !important;
+    font-size: 14px;
+    color: #A8BDD4 !important;
+    width: fit-content;
+}
+
+.theme-badge {
+    height: 28px !important;
+    font-weight: 400 !important;
+    font-size: 14px;
+    width: fit-content;
+    background-color: #06758E !important;
+    color: white;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+}
+
+.caption-text {
+    height: 56px;
+    color: #63EA57;
+    display: flex;
+    align-items: center;
+}
+
+.game-finished-button {
+    width: 100%;
+    text-transform: uppercase;
+    height: 56px;
+    border-radius: 16px !important;
+    background-color: #5991FF !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    line-height: 24px !important;
+}
+
+.game-card__main-stack {
+    gap: 14px
+}
+
+.desc-card {
+    background-color: #0E1E31 !important;
+    color: white !important;
+    border: none !important
+}
+
+.desc-card__title {
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    margin: 0 !important;
+}
+
+.desc-card__caption {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    color: #869EBA !important;
+}
+.game-card__img {
+    background-color: #49D2F1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.date-header__date {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.date-header__day {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #A6683B
+}
+
+.date-header__time {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.admin-controls {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #182A3E;
+    width: 140px;
+    height: 62px;
+    z-index: 1;
+    border-radius: 0 30px 0 0;
+    padding-top: 14px;
+    padding-right: 14px;
+    z-index: 3;
+}
+
+.edit-game-button {
+    position: absolute;
+    left: 0;
+    width: 56px !important;
+    height: 48px !important;
+    border-radius: 16px !important;
+    background-color: #496079 !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    border: none !important;
+}
+
+.delete-game-button {
+    position: absolute;
+    left: 70px;
+    border: none !important;
+    width: 56px !important;
+    height: 48px !important;
+    border-radius: 16px !important;
+    background-color: #AF2E3B !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+.registration-modal .modal-content  {
+    width: 742px;
+    height: 1401px;
+    gap: 42px;
+    border-radius: 52px;
+    padding: 36px;
+    background-color: #0E1E31;
+}
+
+.registration-modal__title {
+    width: 670px;
+    height: 394px;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.registration-title-row {
+    width: 670px;
+    height: 40px;
+    gap: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registration-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: white;
+}
+
+.btn,
+.btn.registration-modal__close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px !important;
+    padding: 11px;
+    background-color: #496079;
+    display: flex;
+}
+
+.information-area {
+    width: 670px;
+    height: 314px;
+    gap: 32px;
+}
+
+.card-information {
+    width: 670px;
+    height: 156px;
+    justify-content: space-between;
+    border-radius: 30px;
+    display: flex;
+    overflow: hidden;
+}
+
+.card-information__title {
+    width: 473px;
+    height: 162px;
+    gap: 12px;
+    padding: 24px;
+    background-color: #BFF5FF;
+}
+
+.card-information__date {
+    width: 197px;
+    height: 156px;
+    gap: 8px;
+    padding-top: 10px 24px;
+    background-color: #49D2F1;
+}
+
+.additional-info {
+    width: 670px;
+    height: 44px;
+    gap: 42px;
+}
+
+.reserve-warning {
+    width: 670px;
+    height: 50px;
+    gap: 10px;
+    padding: 14px 0;
+    border-radius: 16px;
+    background-color: #FDCDCD;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    color: #B93C3C
+}
+
 
 @media(min-width: 481px) {
     .outer-container {

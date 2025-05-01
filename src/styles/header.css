@@ -1,71 +1,165 @@
-a {
+.modal .modal-content {
+    width: 600px;
+    height: 478px;
+    gap: 28px;
+    padding: 16px;
+    border-radius: 24px;
+    background-color: #0E1E31;
+    color: white;
+}    
+
+.modal .modal-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0%;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 20px;
+    letter-spacing: 0%;
+}
+
+.modal-input-field.form-control {
+    width: 480px;
+    height: 48px;
+    padding: 13px 12px;
+    border-radius: 12px;
+    background-color: #1C3652;
+    border: none;
     width: 100%;
-}
-.header {
-    max-width: 480px;
-    margin: 0 auto;
+    color: #5D738B;
 }
 
-.header__logo-image {
-    width: auto;
-    height: 2.5rem;
+.modal-input-field.form-control::placeholder {
+    color: #5D738B;
+    opacity: 1; 
 }
 
-.burger-icon {
-    width: 1rem;
-    height: 1rem;
-}
-  
-  
-
-.create-button-container {
-    display: block;
-    width: 95%;
-    margin: 0 auto;
-}
-
-.header__modal {
-    position: fixed;
-    top: 150px;
-    right: 0;
-    border-radius: 30px;
-    width: 300px;
-    height: 200px;
-    background-color: #ffe6be;
-    z-index: 4;
+.login-btn__container {
+    height: 76px;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
 }
 
-.create-button {
-    width: 100%;
-    background-color: #0A1221;
-    border: 2px solid #ffe6be;
-    border-radius: 9999px;
+.modal-login-btn.btn {
+    width: 153px;
+    height: 48px;
+    padding: 15px 14px;
+    border-radius: 14px !important;
+    background-color: #F4DA6A;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: center;
     text-transform: uppercase;
-    color: #fff;
-    font-weight: bold;
-    margin-top: 1rem;
-    font-size: 1.125rem;
-    padding: 0.25rem 0.75rem;
 }
 
+.close-modal-btn {
+    align-self: end;
+}
 
-@media(min-width: 780px) {
-    .header {
-        max-width: 100vw;
-        margin: 0 auto;
-    }
+.header {
+    background-color: transparent;
+    height: 100px;
+    z-index: 1;
+    width: 1280px;
+    justify-self: anchor-center;
+}
 
-    .header__logo-image {
-        width: auto;
-        height: 5rem;
-        margin: 30px;
-    }
-    
-    .burger-icon {
-      width: 2.5rem !important;
-      height: 2.5rem !important;
-    }
+.btn, 
+.btn.login-button {
+    width: 106px;
+    height: 52px;
+    background-color: #496079;
+    color: white;
+    border-radius: 14px ;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.badge,
+.badge.admin-badge {
+    width: 54px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: #06758E;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0%;
+    justify-self: center;
+    gap: 5px;
+    padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    z-index: 1
+}
+
+.btn, 
+.btn.account-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 26px !important; 
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #496079;
+    color: white;
+    border-radius: 14px ;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.btn, 
+.btn.logout-btn {
+    width: 54px; 
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.navbar-nav, .nav-tabs {
+    display: flex;
+    align-items: center;
+    width: 589px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar .container {
+    margin: 0 32px;
+    padding: 0;
+    max-width: none;
+}
+
+.navbar .nav-link,
+.nav-tabs .nav-link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #A8BDD4;  
 }

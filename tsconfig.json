@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "noImplicitAny": false
   },
-  "include": ["src"]
+  "include": ["src", "js-cookie.d.ts"]
 }

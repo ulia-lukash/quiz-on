@@ -1,0 +1,21 @@
+.game-filters-card {
+    background-color: #1C3551 ;
+    width: 289px;
+    height: fit-content;
+    border-radius: 18px;
+    border: none;
+    padding: 24px;
+    color: white;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.form-check-label {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+}

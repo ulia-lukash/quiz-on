@@ -1,15 +1,18 @@
 a {
     text-decoration: none !important;
 }
+.app-main {
+    background-color: #0E1E31;
+}
 .app {
     max-width: 480px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    height: 100vh;
+    background-color: #0E1E31;
 }
 
-.login-modal .modal-content {
+/* .login-modal .modal-content {
 
     width: 95%;
     margin: 0 auto;
@@ -26,7 +29,7 @@ a {
 .login-modal .modal-content .reg-btn {
     border-radius: 0.375rem;
     margin-top: 5px;
- }
+ } */
 
 .app-content {
     flex: 1;

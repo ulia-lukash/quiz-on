@@ -1,0 +1,15 @@
+.schedule-game-list {
+    width: 100%;
+    height: fit-content;
+    background-color: #182A3E;
+    padding: 32px;
+    display: flex;
+    width: 1280px;
+    justify-self: anchor-center;
+}
+
+.game-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

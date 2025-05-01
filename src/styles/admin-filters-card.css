@@ -1,0 +1,39 @@
+.admin-filters-card {
+    background-color: #9E7E51 !important ;
+    width: 289px;
+    border-radius: 18px !important;
+    border: none !important;
+    padding: 6px 8px 8px 8px;
+    color: white !important;
+    margin-top: 30px;
+}
+
+.admin-filters-card__title {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+    letter-spacing: 0% !important;
+    color: #603A05 !important;
+    padding-bottom: 8px;
+}
+
+.filters-form {
+    background-color: #1C3551 !important ;
+    width: 273px;
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 24px;
+    height: fit-content;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.form-check-label {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+}
