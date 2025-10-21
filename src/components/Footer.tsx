@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/footer.css';
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
   return (
     <footer className="p-4 mt-4 d-flex flex-column align-items-center">
   <div className="w-100 text-center">
@@ -25,7 +26,7 @@ export default function Footer() {
     </a>
   </div>
   <div className="w-100 text-center mt-3 copyright">
-    © 2024 КвизON
+    © 2018 - {currentYear} КвизON
   </div>
   <div className="mt-2">
     <a 
